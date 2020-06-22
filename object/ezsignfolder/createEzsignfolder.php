@@ -1,19 +1,19 @@
 <?php
 
-use \eZmaxAPI\Client\Model;
-use eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Request;
-use eZmaxAPI\Client\Model\EzsignfolderRequest;
-
 /**
  * This sample shows how to create one or more ezsignfolder.
- * In this example, we will create many ezsign folders at the same time to show all possibilities.
- * If you want to create only one, you would add only one object to the array
+ * In this example, we will create a single ezsign folder but you can create more than one by adding more objects to the array.
  * 
  */
 
+//Specifying namespaces we are using below to make the creation of objects easier to read.
+use eZmaxAPI\Client\Api\EzsignfolderApi;
+use eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Request;
+use eZmaxAPI\Client\Model\EzsignfolderRequest;
+
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new eZmaxAPI\Client\Api\EzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsignfolderApi = new EzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contain all the objects we want to create.
 $a_objEzsignfolderCreateObjectV1Request = [];
@@ -62,9 +62,17 @@ $a_objEzsignfolderCreateObjectV1Request [] = $objEzsignfolderCreateObjectV1Reque
 try {
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Response $x
+     * @var \eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
      */
     $objEzsignfolderCreateObjectV1Response = $objEzsignfolderApi->ezsignfolderCreateObjectV1($a_objEzsignfolderCreateObjectV1Request);
+    
+    /*
+     * The server will return the unique pkiEzsignfolderID of each created Ezsignfolder in the same order they were in the $a_objEzsignfolderCreateObjectV1Request array.
+     * You can keep these values for future requests to check the status or other needs
+     */
+    foreach ($objEzsignfolderCreateObjectV1Response->getMPayload()->getAPkiEzsignfolderID() as $pkiEzsignfolderID) {
+        echo "Ezsignfolder created with pkiEzsignfolderID = $pkiEzsignfolderID".PHP_EOL;
+    }
     
     //Ouput complete response
     print_r($objEzsignfolderCreateObjectV1Response);

@@ -1,5 +1,8 @@
 <?php
 
+//Specifying namespaces we are using below to make the creation of objects easier to read.
+use eZmaxAPI\Client\Api\ActivesessionApi;
+
 /**
  * This sample shows how to query the current session of the API key currently in use.
  * 
@@ -9,7 +12,7 @@
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objActivesessionApi = new eZmaxAPI\Client\Api\ActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
+$objActivesessionApi = new ActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
     /**
