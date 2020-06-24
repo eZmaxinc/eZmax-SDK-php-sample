@@ -7,9 +7,9 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Client\Api\EzsignfolderApi;
-use eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Request;
-use eZmaxAPI\Client\Model\EzsignfolderRequest;
+use eZmaxAPI\Api\EzsignfolderApi;
+use eZmaxAPI\Model\EzsignfolderCreateObjectV1Request;
+use eZmaxAPI\Model\EzsignfolderRequest;
 
 require_once (__DIR__ . '/../../connector.php');
 

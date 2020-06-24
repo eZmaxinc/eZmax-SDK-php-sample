@@ -1,7 +1,7 @@
 <?php
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Client\Api\ActivesessionApi;
+use eZmaxAPI\Api\ActivesessionApi;
 
 /**
  * This sample shows how to query the current session of the API key currently in use.
