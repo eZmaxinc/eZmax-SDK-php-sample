@@ -18,7 +18,7 @@ try {
     /**
      * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
      */
-    $objActivesessionGetCurrentV1Response = $objActivesessionApi->ActivesessionGetCurrentV1();
+    $objActivesessionGetCurrentV1Response = $objActivesessionApi->activesessionGetCurrentV1();
     
     //Output some attributes
     echo $objActivesessionGetCurrentV1Response->getMPayload()->getSCompanyNameX().PHP_EOL;
