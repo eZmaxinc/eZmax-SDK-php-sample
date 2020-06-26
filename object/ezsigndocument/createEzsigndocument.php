@@ -17,7 +17,7 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 602);
+define ('SAMPLE_pkiEzsignfolderID', 24);
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -43,6 +43,11 @@ $objEzsigndocumentRequest = new EzsigndocumentRequest();
 
 //This will link the Ezsigndocument to an existing Ezsignfolder. This value was returned after a successful Ezsignfolder creation. 
 $objEzsigndocumentRequest->setFkiEzsignfolderID(SAMPLE_pkiEzsignfolderID);
+
+/*
+ * The language in which the evidence file will be. Each signer will still receive emails and see interface in their own language.
+ */
+$objEzsigndocumentRequest->setFkiLanguageID(2);
 
 //Set the Ezsigndocument name. The name of the document that will be presented to Ezsignsigners
 $objEzsigndocumentRequest->setSEzsignDocumentName('Important contract');

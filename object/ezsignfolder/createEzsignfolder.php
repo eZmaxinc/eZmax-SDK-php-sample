@@ -34,7 +34,7 @@ $objEzsignfolderCreateObjectV1Request = new EzsignfolderCreateObjectV1Request ()
 $objEzsignfolderRequest = new EzsignfolderRequest();
 
 //This will determine in wich type of folder the folder will be. 
-$objEzsignfolderRequest->setFkiEzsignfoldertypeID(3);
+$objEzsignfolderRequest->setFkiEzsignfoldertypeID(1);
 
 //Set if you need TSA or not. Please refer to API Documentation
 $objEzsignfolderRequest->setFkiEzsigntsarequirementID(1);
