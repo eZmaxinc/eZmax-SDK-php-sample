@@ -1,5 +1,5 @@
 {
     "require": {
-        "ezmaxinc/ezmax-sdk-php": "dev-develop"
+        "ezmaxinc/ezmax-sdk-php": "^1.0"
     }
 }
