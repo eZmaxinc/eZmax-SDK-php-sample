@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This sample shows how to create one or more ezsignfolder.
- * In this example, we will create a single ezsign folder but you can create more than one by adding more objects to the array.
+ * This sample shows how to create one or more Ezsignfolder.
+ * In this example, we will create a single Ezsignfolder but you can create more than one by adding more objects to the array.
  * 
  */
 
@@ -34,19 +34,13 @@ $objEzsignfolderCreateObjectV1Request = new EzsignfolderCreateObjectV1Request ()
 $objEzsignfolderRequest = new EzsignfolderRequest();
 
 //This will determine in wich type of folder the folder will be. 
-$objEzsignfolderRequest->setFkiEzsignfoldertypeID(1);
+$objEzsignfolderRequest->setFkiEzsignfoldertypeID(3);
 
 //Set if you need TSA or not. Please refer to API Documentation
 $objEzsignfolderRequest->setFkiEzsigntsarequirementID(1);
 
 //Set the reminder frequency for Ezsign signers that haven't signed the document
 $objEzsignfolderRequest->setEEzsignfolderSendreminderfrequency('Daily');
-
-/*
- * The language in which the signing process will happen (For evidence file for exemple). Each signer will still receive
- * emails and see interface in their own language.
- */
-$objEzsignfolderRequest->setFkiLanguageID(2);
 
 //Set the "name" of the folder for easy reference
 $objEzsignfolderRequest->setSEzsignfolderDescription('Test eZsign Folder');
@@ -63,6 +57,12 @@ $a_objEzsignfolderCreateObjectV1Request [] = $objEzsignfolderCreateObjectV1Reque
 /********************************** EXAMPLE Ezsignfolder Only (End) **********************************/
 
 try {
+    
+    /*
+     * Uncomment this line if you want to see the actual request's body that will be sent to the server
+     */
+    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objEzsignfolderCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
+    
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
