@@ -61,7 +61,7 @@ try {
     /*
      * Uncomment this line if you want to see the actual request's body that will be sent to the server
      */
-    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objEzsignfolderCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
+   //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objEzsignfolderCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
     
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
@@ -77,8 +77,8 @@ try {
         echo "Ezsignfolder created with pkiEzsignfolderID = $pkiEzsignfolderID".PHP_EOL;
     }
     
-    //Ouput complete response
-    print_r($objEzsignfolderCreateObjectV1Response);
+    //Uncomment this line to ouput complete response
+    //print_r($objEzsignfolderCreateObjectV1Response);
     
 }
 catch (Exception $e) {

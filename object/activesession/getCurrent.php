@@ -15,6 +15,7 @@ require_once (__DIR__ . '/../../connector.php');
 $objActivesessionApi = new ActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
+    
     /**
      * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
      */
@@ -27,8 +28,8 @@ try {
     //Output registered modules
     print_r($objActivesessionGetCurrentV1Response->getMPayload()->getARegisteredModules());
     
-    //Ouput complete response
-    print_r($objActivesessionGetCurrentV1Response);
+    //Uncomment this line to ouput complete response
+    //print_r($objActivesessionGetCurrentV1Response);
 }
 catch (Exception $e) {
     print_r($e);

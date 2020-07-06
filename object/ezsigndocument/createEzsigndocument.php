@@ -17,7 +17,7 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 24);
+define ('SAMPLE_pkiEzsignfolderID', 641);
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -94,8 +94,8 @@ try {
         echo "Ezsigndocument created with pkiEzsigndocumentID = $pkiEzsigndocumentID".PHP_EOL;
     }
     
-    //Ouput complete response
-    print_r($objEzsigndocumentCreateObjectV1Response);
+    //Uncomment this line to ouput complete response
+    //print_r($objEzsigndocumentCreateObjectV1Response);
     
 }
 catch (Exception $e) {
