@@ -20,7 +20,7 @@ use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
  * This value was returned after a successful Ezsignfolder creation.
  */
 
-define ('SAMPLE_pkiEzsignfolderID', 212);
+define ('SAMPLE_pkiEzsignfolderID', 646);
 define ('SAMPLE_pkiUserID', 4);
 
 require_once (__DIR__ . '/../../connector.php');
