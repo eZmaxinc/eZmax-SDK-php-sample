@@ -31,13 +31,13 @@ $a_objEzsigndocumentCreateObjectV1Request = [];
 /**
  * This is the object that will contain either a objEzsigndocument or a objEzsigndocumentCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsigndocumentCreateObjectV1Request $objEzsigndocumentCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Request $objEzsigndocumentCreateObjectV1Request
  */
 $objEzsigndocumentCreateObjectV1Request = new EzsigndocumentCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsigndocument 
- * @var \eZmaxAPI\Client\Model\EzsigndocumentRequest $objEzsigndocumentRequest
+ * @var \eZmaxAPI\Model\EzsigndocumentRequest $objEzsigndocumentRequest
  */
 $objEzsigndocumentRequest = new EzsigndocumentRequest();
 
@@ -82,7 +82,7 @@ try {
     
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Client\Model\EzsigndocumentCreateObjectV1Response $objEzsigndocumentCreateObjectV1Response
+     * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Response $objEzsigndocumentCreateObjectV1Response
      */
     $objEzsigndocumentCreateObjectV1Response = $objEzsigndocumentApi->ezsigndocumentCreateObjectV1($a_objEzsigndocumentCreateObjectV1Request);
     

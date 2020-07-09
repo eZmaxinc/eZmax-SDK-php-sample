@@ -35,13 +35,13 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request = [];
 /**
  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
 $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociation 
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationRequest $objEzsignfoldersignerassociationRequest
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequest $objEzsignfoldersignerassociationRequest
  */
 $objEzsignfoldersignerassociationRequest = new EzsignfoldersignerassociationRequest();
 
@@ -66,13 +66,13 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /**
  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
 $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
 */
 $objEzsignfoldersignerassociationRequestCompound = new EzsignfoldersignerassociationRequestCompound();
 
@@ -81,7 +81,7 @@ $objEzsignfoldersignerassociationRequestCompound->setFkiEzsignfolderID(SAMPLE_pk
 
 /**
  * Let's create an EzsignsignerRequestCompound since we will be adding an object contact in our signer
- * @var \eZmaxAPI\Client\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
+ * @var \eZmaxAPI\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
 */
 $objEzsignsignerRequestCompound = new EzsignsignerRequestCompound();
 
@@ -127,13 +127,13 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /**
  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
 $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
 */
 $objEzsignfoldersignerassociationRequestCompound = new EzsignfoldersignerassociationRequestCompound();
 
@@ -142,7 +142,7 @@ $objEzsignfoldersignerassociationRequestCompound->setFkiEzsignfolderID(SAMPLE_pk
 
 /**
  * Let's create an EzsignsignerRequestCompound since we will be adding an object contact in our signer
- * @var \eZmaxAPI\Client\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
+ * @var \eZmaxAPI\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
  */
 $objEzsignsignerRequestCompound = new EzsignsignerRequestCompound();
 
@@ -194,13 +194,13 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /**
  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
  $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
- * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
  */
  $objEzsignfoldersignerassociationRequestCompound = new EzsignfoldersignerassociationRequestCompound();
 
@@ -209,7 +209,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 
  /**
   * Let's create an EzsignsignerRequestCompound since we will be adding an object contact in our signer
-  * @var \eZmaxAPI\Client\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
+  * @var \eZmaxAPI\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
   */
  $objEzsignsignerRequestCompound = new EzsignsignerRequestCompound();
  
@@ -262,13 +262,13 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  /**
   * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
   * depending on the type of object you want to create.
-  * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
+  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
   */
  $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
  
  /**
   * For this example, let's create an objEzsignfoldersignerassociationCompound
-  * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
+  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
  */
  $objEzsignfoldersignerassociationRequestCompound = new EzsignfoldersignerassociationRequestCompound();
  
@@ -277,7 +277,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  
  /**
   * Let's create an EzsignsignerRequestCompound since we will be adding an object contact in our signer
-  * @var \eZmaxAPI\Client\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
+  * @var \eZmaxAPI\Model\EzsignsignerRequestCompound $objEzsignsignerRequestCompound
  */
  $objEzsignsignerRequestCompound = new EzsignsignerRequestCompound();
  
@@ -332,7 +332,7 @@ try {
 
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Client\Model\EzsignfoldersignerassociationCreateObjectV1Response $objEzsignfoldersignerassociationCreateObjectV1Response
+     * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Response $objEzsignfoldersignerassociationCreateObjectV1Response
      */
     $objEzsignfoldersignerassociationCreateObjectV1Response = $objEzsignfoldersignerassociationApi->EzsignfoldersignerassociationCreateObjectV1($a_objEzsignfoldersignerassociationCreateObjectV1Request);
     

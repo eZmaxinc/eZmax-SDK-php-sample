@@ -17,7 +17,7 @@ $objActivesessionApi = new ActivesessionApi(new GuzzleHttp\Client(), $objConfigu
 try {
     
     /**
-     * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
+     * @var \eZmaxAPI\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
      */
     $objActivesessionGetCurrentV1Response = $objActivesessionApi->activesessionGetCurrentV1();
     

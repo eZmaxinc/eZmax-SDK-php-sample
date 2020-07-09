@@ -23,13 +23,13 @@ $a_objEzsignfolderCreateObjectV1Request = [];
 /**
  * This is the object that will contain either a objEzsignfolder or a objEzsignfolderCompound
  * depending on the type of object you want to create.
- * @var \eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Request $objEzsignfolderCreateObjectV1Request
+ * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Request $objEzsignfolderCreateObjectV1Request
  */
 $objEzsignfolderCreateObjectV1Request = new EzsignfolderCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfolder 
- * @var \eZmaxAPI\Client\Model\EzsignfolderRequest $objEzsignfolderRequest
+ * @var \eZmaxAPI\Model\EzsignfolderRequest $objEzsignfolderRequest
  */
 $objEzsignfolderRequest = new EzsignfolderRequest();
 
@@ -65,7 +65,7 @@ try {
     
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Client\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
+     * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
      */
     $objEzsignfolderCreateObjectV1Response = $objEzsignfolderApi->ezsignfolderCreateObjectV1($a_objEzsignfolderCreateObjectV1Request);
     
