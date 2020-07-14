@@ -20,7 +20,7 @@ use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
  * This value was returned after a successful Ezsignfolder creation.
  */
 
-define ('SAMPLE_pkiEzsignfolderID', 646);
+define ('SAMPLE_pkiEzsignfolderID', 629);
 define ('SAMPLE_pkiUserID', 4);
 
 require_once (__DIR__ . '/../../connector.php');
@@ -96,7 +96,7 @@ $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('Password');
 $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
 
 // Sets the first name
-$objEzsignsignerRequestCompoundContact->setSContactFirstname('Aras');
+$objEzsignsignerRequestCompoundContact->setSContactFirstname('Araséèëàâ');
 
 // Sets the last name
 $objEzsignsignerRequestCompoundContact->setSContactLastname('Robertson');
