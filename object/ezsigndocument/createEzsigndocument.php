@@ -17,7 +17,7 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 651);
+define ('SAMPLE_pkiEzsignfolderID', 652);
 
 require_once (__DIR__ . '/../../connector.php');
 
