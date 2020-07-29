@@ -17,7 +17,7 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 646);
+define ('SAMPLE_pkiEzsignfolderID', 651);
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -50,10 +50,10 @@ $objEzsigndocumentRequest->setFkiEzsignfolderID(SAMPLE_pkiEzsignfolderID);
 $objEzsigndocumentRequest->setFkiLanguageID(2);
 
 //Set the Ezsigndocument name. The name of the document that will be presented to Ezsignsigners
-$objEzsigndocumentRequest->setSEzsignDocumentName('Important contract');
+$objEzsigndocumentRequest->setSEzsigndocumentName('Important contract');
 
 //The actual file name that will be used when downloading or attaching to an email.
-$objEzsigndocumentRequest->setSEzsignDocumentFilename('Important Contract.pdf');
+$objEzsigndocumentRequest->setSEzsigndocumentFilename('Important Contract.pdf');
 
 //The Ezsignsigners will have up to that specific date/time to sign the documents. In this example, we'll give them 5 days from now
 $dtEzsigndocumentDuedate = date('Y-m-d H:i:s', strtotime("+5 days"));
