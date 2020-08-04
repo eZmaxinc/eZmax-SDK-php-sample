@@ -17,7 +17,7 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 652);
+define ('SAMPLE_pkiEzsignfolderID', 656);
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -74,7 +74,7 @@ $a_objEzsigndocumentCreateObjectV1Request [] = $objEzsigndocumentCreateObjectV1R
 /********************************** EXAMPLE Ezsigndocument Only Base64 Pdf (End) **********************************/
 
 try {
-    
+	
     /*
      * Uncomment this line if you want to see the actual request's body that will be sent to the server
      */
