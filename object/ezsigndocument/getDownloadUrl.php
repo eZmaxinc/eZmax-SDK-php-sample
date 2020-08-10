@@ -46,18 +46,8 @@ try {
 	// Let's retrieve some data from the object and display it
 	//echo 'Url: '.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl().PHP_EOL;
 
-	// We configure Curl to download and save file to disk. File is transmit in gzip format.
-	$options = array(
-		CURLOPT_FILE    => fopen(__DIR__ . '/document.pdf', 'w'), // We receive an pdf document.
-		CURLOPT_URL     => $objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl(),
-		CURLOPT_ENCODING => "gzip"
-	);
-	// Let's retrieve document.
-	$ch = curl_init();
-	curl_setopt_array($ch, $options);
-	curl_exec($ch);
-	curl_close($ch);
-
+	// Download and save file to disk. File is transmit in gzip format. We use wrapper "compress.zlib://" to uncompress it.
+	file_put_contents(__DIR__ . '/document.pdf', file_get_contents('compress.zlib://'.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl()));
 
 
 	/*
@@ -72,19 +62,8 @@ try {
 	//Uncomment this line to ouput complete response
 	//print_r($objEzsigndocumentGetDownloadUrlV1Responsee);
 
-	// We configure Curl to download and save file to disk. File is transmit in gzip format.
-	$options = array(
-		CURLOPT_FILE    => fopen(__DIR__ . '/proof.zip', 'w'), // We receive an zip archive.
-		CURLOPT_URL     => $objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl(),
-		CURLOPT_ENCODING => "gzip"
-	);
-
-	// Let's retrieve document.
-	$ch = curl_init();
-	curl_setopt_array($ch, $options);
-	curl_exec($ch);
-	curl_close($ch);
-
+	// Download and save file to disk. File is transmit in gzip format. We use wrapper "compress.zlib://" to uncompress it.
+	file_put_contents(__DIR__ . '/proof.zip', file_get_contents('compress.zlib://'.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl()));
 
 
 	/*
@@ -96,18 +75,8 @@ try {
 	// Let's retrieve some data from the object and display it
 	//echo 'Url: '.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl().PHP_EOL;
 
-	// We configure Curl to download and save file to disk. File is transmit in gzip format.
-	$options = array(
-		CURLOPT_FILE    => fopen(__DIR__ . '/proofdocument.pdf', 'w'), // We receive an pdf document.
-		CURLOPT_URL     => $objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl(),
-		CURLOPT_ENCODING => "gzip"
-	);
-	// Let's retrieve document.
-	$ch = curl_init();
-	curl_setopt_array($ch, $options);
-	curl_exec($ch);
-	curl_close($ch);
-
+	// Download and save file to disk. File is transmit in gzip format. We use wrapper "compress.zlib://" to uncompress it.
+	file_put_contents(__DIR__ . '/proofdocument.pdf', file_get_contents('compress.zlib://'.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl()));
 
 
 	echo 'File downloaded to '.__DIR__ . '/document.pdf'.PHP_EOL;
@@ -117,7 +86,5 @@ try {
 catch (Exception $e) {
 	print_r($e);
 }
-// If everything went well, send HTTP status code 204 so the calling server everything was successful and no more attempts should be made
-//header("HTTP/1.1 204");
 
 ?>

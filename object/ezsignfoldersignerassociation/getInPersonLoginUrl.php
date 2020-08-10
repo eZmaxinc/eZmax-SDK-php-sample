@@ -38,7 +38,5 @@ try {
 catch (Exception $e) {
 	print_r($e);
 }
-// If everything went well, send HTTP status code 204 so the calling server everything was successful and no more attempts should be made
-//header("HTTP/1.1 204");
 
 ?>
