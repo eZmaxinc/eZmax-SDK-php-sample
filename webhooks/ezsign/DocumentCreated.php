@@ -65,10 +65,10 @@ F_LOCAL_WriteToLog("\n" , FILE_APPEND);
 //This object contain list of previous attempt.
 $a_objAttempt = $objWebhookEzsignDocumentCompleted->getAObjAttempt();
 if(count($a_objAttempt) == 0){
-	F_LOCAL_WriteToLog("We don\'t have previous attemps. Webhook was passed on the first try.");
+	F_LOCAL_WriteToLog("We don\'t have previous attempts. Webhook was passed on the first try.");
 
 }else{
-	F_LOCAL_WriteToLog("We have ".count($a_objAttempt)." previous attemps ");
+	F_LOCAL_WriteToLog("We have ".count($a_objAttempt)." previous attempts.");
 
 	$iAttemptNumber = 0;
 
