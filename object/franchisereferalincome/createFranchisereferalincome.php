@@ -26,7 +26,7 @@ define ('SAMPLE_fkiFranchisebrokerID', 1);
 define ('SAMPLE_fkiFranchisereferalincomeprogramID', 1);
 define ('SAMPLE_fkiPeriodID', 420);
 define ('SAMPLE_fkiContacttitleID', 2); // Mr.
-define ('SAMPLE_fkiLanguageID', 1); // French
+define ('SAMPLE_fkiLanguageID', 2); // English
 define ('SAMPLE_fkiPhonetypeID', 1); // Office
 define ('SAMPLE_fkiEmailtypeID', 1); // Office
 define ('SAMPLE_fkiWebsitetypeID', 1); // Website
@@ -62,22 +62,22 @@ $objAddressRequest->setFkiAddresstypeID(SAMPLE_fkiAddresstypeID);
 /**
  * Sets the address civic
  */
-$objAddressRequest->setSAddressCivic('1234');
+$objAddressRequest->setSAddressCivic('2540');
 
 /**
  * Sets the address street
  */
-$objAddressRequest->setSAddressStreet('rue Brière');
+$objAddressRequest->setSAddressStreet('Daniel-Johnson Blvd.');
 
 /**
  * Sets the address suite
  */
-$objAddressRequest->setSAddressSuite('');
+$objAddressRequest->setSAddressSuite('610');
 
 /**
  * Sets the address city
  */
-$objAddressRequest->setSAddressCity('Montreal');
+$objAddressRequest->setSAddressCity('Laval');
 
 /**
  * Sets the address province
@@ -92,7 +92,7 @@ $objAddressRequest->setFkiCountryID(SAMPLE_fkiCountryID);
 /**
  * Sets the address zip code
  */
-$objAddressRequest->setSAddressZip('H0H0H0');
+$objAddressRequest->setSAddressZip('H7T2S3');
 
 /**
  * Sets the address to the request
@@ -100,49 +100,49 @@ $objAddressRequest->setSAddressZip('H0H0H0');
 $objFranchisereferalincomeRequestCompound->setObjAddress($objAddressRequest);
 
 /**
- * Sets the franchise broker. This ID will be retrieved using the service XYZ
+ * Sets the franchise broker.
  */
 $objFranchisereferalincomeRequestCompound->setFkiFranchisebrokerID(SAMPLE_fkiFranchisebrokerID);
 
 /**
- * Sets the program. This ID will be retrieved using service XYZ
+ * Sets the program.
  */
 $objFranchisereferalincomeRequestCompound->setFkiFranchisereferalincomeprogramID(SAMPLE_fkiFranchisereferalincomeprogramID);
 
 /**
- * Sets the period. This ID will be retrieved using service XYZ
+ * Sets the period.
  */
 $objFranchisereferalincomeRequestCompound->setFkiPeriodID(SAMPLE_fkiPeriodID);
 
 /**
  * Sets the loan amount
  */
-$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeLoan(50000);
+$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeLoan(500275.62);
 
 /**
  * Sets the franchise amount
  */
-$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeFranchiseamount(500);
+$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeFranchiseamount(275.00);
 
 /**
  * Sets the franchisor amount
  */
-$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeFranchisoramount(500);
+$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeFranchisoramount(385.00);
 
 /**
  * Sets the agent amount
  */
-$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeAgentamount(500);
+$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeAgentamount(800.00);
 
 /**
- * Sets the dusbursement date
+ * Sets the disbursement date
  */
-$objFranchisereferalincomeRequestCompound->setDtFranchisereferalincomeDisbursed('2020-06-06');
+$objFranchisereferalincomeRequestCompound->setDtFranchisereferalincomeDisbursed('2020-12-31');
 
 /**
  * Sets the comment
  */
-$objFranchisereferalincomeRequestCompound->setTFranchisereferalincomeComment('Here is a comment');
+$objFranchisereferalincomeRequestCompound->setTFranchisereferalincomeComment('This is a comment');
 
 /**
  * Let's create a contact list 
@@ -168,12 +168,12 @@ $objContactRequestCompound->setSContactLastname('Doe');
 /**
  * Sets the company
  */
-$objContactRequestCompound->setSContactCompany('');
+$objContactRequestCompound->setSContactCompany('eZmax Solutions Inc.');
 
 /**
  * Sets the birth date
  */
-$objContactRequestCompound->setDtContactBirthdate('1983-01-01');
+$objContactRequestCompound->setDtContactBirthdate('1980-01-01');
 
 /**
  * Sets the contact title
@@ -209,22 +209,22 @@ $objAddressRequestContact->setFkiAddresstypeID(SAMPLE_fkiAddresstypeID);
 /**
  * Sets the address civic
  */
-$objAddressRequestContact->setSAddressCivic('1234');
+$objAddressRequestContact->setSAddressCivic('2540');
 
 /**
  * Sets the address street
  */
-$objAddressRequestContact->setSAddressStreet('rue Brière');
+$objAddressRequestContact->setSAddressStreet('Daniel-Johnson Blvd.');
 
 /**
  * Sets the address suite
  */
-$objAddressRequestContact->setSAddressSuite('');
+$objAddressRequestContact->setSAddressSuite('610');
 
 /**
  * Sets the address city
  */
-$objAddressRequestContact->setSAddressCity('Montreal');
+$objAddressRequestContact->setSAddressCity('Laval');
 
 /**
  * Sets the address province
@@ -239,7 +239,7 @@ $objAddressRequestContact->setFkiCountryID(SAMPLE_fkiCountryID);
 /**
  * Sets the address zip code
  */
-$objAddressRequestContact->setSAddressZip('H0H0H0');
+$objAddressRequestContact->setSAddressZip('H7T2S3');
 
 /**
  * Adds the address to the address list
@@ -264,7 +264,7 @@ $objEmailRequestContact->setFkiEmailtypeID(SAMPLE_fkiEmailtypeID);
 /**
  * Sets the email address
  */
-$objEmailRequestContact->setSEmailAddress('email@provider.com');
+$objEmailRequestContact->setSEmailAddress('example@domain.com');
 
 /**
  * Let's add the email to the email list
@@ -309,7 +309,7 @@ $objPhoneRequestContact->setSPhoneNumber('1516');
 /**
  * Sets the phone number if international
  */
-$objPhoneRequestContact->setSPhoneInternational('');
+$objPhoneRequestContact->setSPhoneInternational('442071838750');
 
 /**
  * Sets the phone extension
@@ -338,7 +338,7 @@ $objWebsiteRequestContact->setFkiWebsitetypeID(SAMPLE_fkiWebsitetypeID);
 /**
  * Sets the website address
  */
-$objWebsiteRequestContact->setSWebsiteAddress('https://www.ezmax.ca');
+$objWebsiteRequestContact->setSWebsiteAddress('https://www.domain.com');
 
 /**
  * Let's add the website to the website list
