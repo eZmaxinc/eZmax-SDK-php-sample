@@ -76,6 +76,40 @@ try {
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
+	
+	
+	
+	
+	
+	
+	// Let's get all active periods of type Normal with option starting with 2020
+	
+	/**
+	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
+	 */
+	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020');
+	
+	//Output some attributes
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
+	
+	
+	
+	
+	
+	
+	// Let's get all active periods of type Normal with option equals to 2020-05
+	
+	/**
+	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
+	 */
+	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020-05');
+	
+	//Output some attributes
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
+	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
 }
 catch (Exception $e) {
     print_r($e);
