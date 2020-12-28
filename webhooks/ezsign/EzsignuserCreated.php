@@ -10,7 +10,7 @@ date_default_timezone_set('America/Montreal');
 /*
  * Name of log file
  */
-define('FILENAME_LOG', './EzsignuserCreated.log');
+define('FILENAME_LOG', './UserCreated.log');
 
 //Create or empty log file
 file_put_contents(FILENAME_LOG,"");
@@ -24,18 +24,18 @@ function F_LOCAL_WriteToLog($sLogText){
 
 
 //This object contain all objects we receive.
-$objWebhookEzsignEzsignuserCreated =  ObjectSerializer::deserialize(file_get_contents("php://input"), "eZmaxAPI\\Model\\WebhookEzsignEzsignuserCreated");
+$objWebhookUserCreated =  ObjectSerializer::deserialize(file_get_contents("php://input"), "eZmaxAPI\\Model\\WebhookUserCreated");
 
 F_LOCAL_WriteToLog("Webhook received at \"".date('y-m-d H:i:s')."\"");
 
 //This object contain webhook object.
-$objWebhook = $objWebhookEzsignEzsignuserCreated->getObjWebhook();
+$objWebhook = $objWebhookUserCreated->getObjWebhook();
 
 F_LOCAL_WriteToLog("ID of Webhook : {$objWebhook->getPkiWebhookID()}");
 
 F_LOCAL_WriteToLog("Webhook module name : {$objWebhook->getEWebhookModule()}");
 
-if($objWebhook->getEWebhookModule() == "Ezsign"){
+if($objWebhook->getEWebhookModule() == "Management"){
 	F_LOCAL_WriteToLog("We received a webhook with the right module.");
 }
 else{
@@ -44,7 +44,7 @@ else{
 
 F_LOCAL_WriteToLog("Webhook event name : {$objWebhook->getEWebhookEzsignevent()}");
 
-if($objWebhook->getEWebhookEzsignevent() == "EzsignuserCreated"){
+if($objWebhook->getEWebhookEzsignevent() == "UserCreated"){
 	F_LOCAL_WriteToLog("We received a webhook for the right event.");
 }
 else{
@@ -63,11 +63,12 @@ F_LOCAL_WriteToLog("\n" , FILE_APPEND);
 
 
 //This object contain list of previous attempt.
-$a_objAttempt = $objWebhookEzsignEzsignuserCreated->getAObjAttempt();
+$a_objAttempt = $objWebhookUserCreated->getAObjAttempt();
 if(count($a_objAttempt) == 0){
 	F_LOCAL_WriteToLog("We don\'t have previous attempts. Webhook was passed on the first try.");
 
-}else{
+}
+else{
 	F_LOCAL_WriteToLog("We have ".count($a_objAttempt)." previous attempts.");
 
 	$iAttemptNumber = 0;
@@ -86,10 +87,8 @@ if(count($a_objAttempt) == 0){
 
 F_LOCAL_WriteToLog("\n" , FILE_APPEND);
 
-
-
 //This object contain Ezsign User information.
-$objUser = $objWebhookEzsignEzsignuserCreated->getObjUser();
+$objUser = $objWebhookUserCreated->getObjUser();
 
 F_LOCAL_WriteToLog("ID of User : ".$objUser->getPkiID());
 F_LOCAL_WriteToLog("Email of User : ".$objUser->getSEmailaddress());
