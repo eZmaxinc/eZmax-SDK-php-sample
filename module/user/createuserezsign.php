@@ -69,7 +69,7 @@ $a_objUserCreateEzsignuserV1Request[] = $objEzsigndocumentRequest;
 try {
     $objCreateEzsignuserV1Response = $objModuleUserApi->userCreateEzsignuserV1($userCreateEzsignuserV1Request);
     print_r($objCreateEzsignuserV1Response);
-	//echo "User created with pkiUserID = $pkiUserID";
+	
 } catch (Exception $e) {
     print_r($e);
 }

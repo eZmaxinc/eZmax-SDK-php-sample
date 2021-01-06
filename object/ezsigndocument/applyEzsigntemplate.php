@@ -1,30 +1,26 @@
 <?php
 
 /**
- * This sample shows how to add an Ezsigndocument to an Ezsigndocument
- * In this example, we will create a single Ezsigndocument but you can create more than one by adding more objects to the array.
+ * This sample shows how to apply an Ezsigntemplate to an Ezsigndocument
  * 
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\Api\EzsigndocumentApi;
-use eZmaxAPI\Model\UserCreateEzsignuserV1Request;
-use eZmaxAPI\Model\EzsigndocumentRequest;
-
 
 /*
  * The pkiEzsigndocumentID to which we want to apply the template.
- * This value was returned after a successful apply.
+ * This value was returned after a successful Ezsigndocument creation.
  */
 define ('SAMPLE_pkiEzsigndocumentID', 43);
 
 /*
- * The fkiEzsigntemplateID is the ID of the template to apply to document.
+ * The fkiEzsigntemplateID is the ID of the template to apply on the document.
  */
-define ('SAMPLE_fkiEzsigntemplateID', 5); // Must be a template from a shared folder
+define ('SAMPLE_fkiEzsigntemplateID', 5);
 
 /*
- * The array of signer from the template
+ * The array of signers from the template. These values were chosen while anonymizing the template.
  */
 $a_sEzsigntemplatesigner = [
 	"Signer 1",
@@ -32,7 +28,7 @@ $a_sEzsigntemplatesigner = [
 ];
 
 /*
- * The array to which will be associated with the template
+ * The array of Ezsignfoldersignerassociation corresponding to the array of Ezsigntemplatesigner to apply the proper signers on the Ezsigndocument
  */
 $a_pkiEzsignfoldersignerassociationID = [
 	19,
@@ -43,8 +39,6 @@ require_once (__DIR__ . '/../../connector.php');
 
 
 $objEzsigndocumentApi = new eZmaxAPI\Api\ObjectEzsigndocumentApi(new GuzzleHttp\Client(),$objConfiguration);
-
-$pkiEzsigndocumentID = SAMPLE_pkiEzsigndocumentID; // int | The unique ID of the Ezsigndocument
 
 /**
  * For this example, let's create an objEzsigndocumentApplyEzsigntemplate 
@@ -71,7 +65,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsigndocumentApplyEzsigntemplateV1Response $objEzsigndocumentApplyEzsigntemplateV1Response
      */
-    $objEzsigndocumentApplyEzsigntemplateV1Response = $objEzsigndocumentApi->ezsigndocumentApplyEzsigntemplateV1($pkiEzsigndocumentID, $objEzsigndocumentApplyEzsigntemplateRequest);
+    $objEzsigndocumentApplyEzsigntemplateV1Response = $objEzsigndocumentApi->ezsigndocumentApplyEzsigntemplateV1(SAMPLE_pkiEzsigndocumentID, $objEzsigndocumentApplyEzsigntemplateRequest);
 	
     print_r($objEzsigndocumentApplyEzsigntemplateV1Response);
 } catch (Exception $e) {
