@@ -7,12 +7,12 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\FranchisebrokerApi;
+use eZmaxAPI\Api\ObjectFranchisebrokerApi;
 use eZmaxAPI\Model\CommonGetAutocompleteV1Response;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objFranchisebrokerApi = new FranchisebrokerApi(new GuzzleHttp\Client(), $objConfiguration);
+$objFranchisebrokerApi = new ObjectFranchisebrokerApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	// Let's get all active franchise broker

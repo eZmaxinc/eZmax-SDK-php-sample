@@ -7,12 +7,12 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\PeriodApi;
+use eZmaxAPI\Api\ObjectPeriodApi;
 use eZmaxAPI\Model\CommonGetAutocompleteV1Response;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objPeriodApi = new PeriodApi(new GuzzleHttp\Client(), $objConfiguration);
+$objPeriodApi = new ObjectPeriodApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	// Let's get all active periods of type Normal

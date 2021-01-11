@@ -10,7 +10,7 @@
 */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsigndocumentApi;
+use eZmaxAPI\Api\ObjectEzsigndocumentApi;
 use eZmaxAPI\Model\EzsigndocumentGetDownloadUrlV1Response;
 use eZmaxAPI\Model\EzsigndocumentRequest;
 
@@ -33,7 +33,7 @@ define ('SAMPLE_sDocumentTypeProofdocument', 'Proofdocument');
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new EzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 
