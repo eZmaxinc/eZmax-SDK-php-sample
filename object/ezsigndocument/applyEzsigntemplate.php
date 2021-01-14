@@ -6,7 +6,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsigndocumentApi;
+use eZmaxAPI\Api\ObjectEzsigndocumentApi;
 
 /*
  * The pkiEzsigndocumentID to which we want to apply the template.

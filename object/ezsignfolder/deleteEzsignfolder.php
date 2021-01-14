@@ -7,7 +7,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsignfolderApi;
+use eZmaxAPI\Api\ObjectEzsignfolderApi;
 
 /*
  * The pkiEzsignfolderID we wish to delete.
@@ -18,7 +18,7 @@ define ('SAMPLE_pkiEzsignfolderID', 643);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new EzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	

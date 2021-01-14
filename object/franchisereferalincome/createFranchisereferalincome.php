@@ -7,7 +7,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\FranchisereferalincomeApi;
+use eZmaxAPI\Api\ObjectFranchisereferalincomeApi;
 use eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request;
 use eZmaxAPI\Model\FranchisereferalincomeRequestCompound;
 use eZmaxAPI\Model\ContactRequestCompound;
@@ -31,7 +31,7 @@ define ('SAMPLE_fkiPhonetypeID', 1); // Office
 define ('SAMPLE_fkiEmailtypeID', 1); // Office
 define ('SAMPLE_fkiWebsitetypeID', 1); // Website
 
-$objFranchisereferalincomeApi = new FranchisereferalincomeApi(new GuzzleHttp\Client(), $objConfiguration);
+$objFranchisereferalincomeApi = new ObjectFranchisereferalincomeApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contain all the objects we want to create.
 $a_objFranchisereferalincomeCreateObjectV1Request = [];

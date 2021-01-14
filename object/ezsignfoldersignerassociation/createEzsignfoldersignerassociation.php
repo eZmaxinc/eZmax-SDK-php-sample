@@ -8,7 +8,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsignfoldersignerassociationApi;
+use eZmaxAPI\Api\ObjectEzsignfoldersignerassociationApi;
 use eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request;
 use eZmaxAPI\Model\EzsignfoldersignerassociationRequest;
 use eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound;
@@ -25,7 +25,7 @@ define ('SAMPLE_pkiUserID', 4);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfoldersignerassociationApi = new EzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contain all the objects we want to create.
 $a_objEzsignfoldersignerassociationCreateObjectV1Request = [];

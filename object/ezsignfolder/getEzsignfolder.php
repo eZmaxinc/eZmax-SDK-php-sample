@@ -7,7 +7,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsignfolderApi;
+use eZmaxAPI\Api\ObjectEzsignfolderApi;
 
 /*
  * The pkiEzsignfolderID we wish to get.
@@ -18,7 +18,7 @@ define ('SAMPLE_pkiEzsignfolderID', 220);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new EzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
@@ -32,8 +32,8 @@ try {
 	echo 'ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getPkiEzsignfolderID().PHP_EOL;
 	echo 'Description: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getSEzsignfolderDescription().PHP_EOL;
 	echo 'Note: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getTEzsignfolderNote().PHP_EOL;
-	echo 'Created by user ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getFkiUserIDCreated().PHP_EOL;
-	echo 'Modified by user ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getFkiUserIDModified().PHP_EOL;
+	echo 'Created by user ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getObjAudit()->getFkiUserIDCreated().PHP_EOL;
+	echo 'Modified by user ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getObjAudit()->getFkiUserIDModified().PHP_EOL;
 	
 	//Uncomment this line to ouput complete response
 	//print_r($objEzsignfolderGetObjectV1Response);

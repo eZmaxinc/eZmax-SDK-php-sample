@@ -7,7 +7,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsigndocumentApi;
+use eZmaxAPI\Api\ObjectEzsigndocumentApi;
 
 /*
  * The pkiEzsigndocumentID we wish to get.
@@ -18,7 +18,7 @@ define ('SAMPLE_pkiEzsigndocumentID', 680);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new EzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
@@ -31,8 +31,8 @@ try {
 	// Let's retrieve some data from the object and display it
 	echo 'ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getPkiEzsigndocumentID().PHP_EOL;
 	echo 'Document name: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getSEzsigndocumentName().PHP_EOL;
-	echo 'User created by ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getFkiUserIDCreated().PHP_EOL;
-	echo 'User modified by ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getFkiUserIDModified().PHP_EOL;
+	echo 'User created by ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getObjAudit()->getFkiUserIDCreated().PHP_EOL;
+	echo 'User modified by ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getObjAudit()->getFkiUserIDModified().PHP_EOL;
 	
 	//Uncomment this line to ouput complete response
 	//print_r($objEzsigndocumentGetObjectV1Response);
