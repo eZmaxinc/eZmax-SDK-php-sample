@@ -7,7 +7,7 @@
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\EzsignsignatureApi;
+use eZmaxAPI\Api\ObjectEzsignsignatureApi;
 use eZmaxAPI\Model\EzsignsignatureCreateObjectV1Request;
 use eZmaxAPI\Model\EzsignsignatureRequest;
 
@@ -16,7 +16,7 @@ require_once (__DIR__ . '/../../connector.php');
 define ('SAMPLE_fkiEzsigndocumentID', 659);
 define ('SAMPLE_fkiEzsignfoldersignerassociationID', 431);
 
-$objEzsignsignatureApi = new EzsignsignatureApi(new GuzzleHttp\Client(), $objConfiguration);
+$objEzsignsignatureApi = new ObjectEzsignsignatureApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contain all the objects we want to create.
 $a_objEzsignsignatureCreateObjectV1Request = [];
