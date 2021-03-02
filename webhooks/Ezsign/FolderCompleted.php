@@ -3,6 +3,7 @@
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\ObjectSerializer;
 
+require_once (__DIR__ . '/../../connector.php');
 
 // Set timezone
 date_default_timezone_set('America/Montreal');
@@ -10,7 +11,7 @@ date_default_timezone_set('America/Montreal');
 /*
  * Name of log file
  */
-define('FILENAME_LOG', './FolderCreated.log');
+define('FILENAME_LOG', './FolderCompleted.log');
 
 //Create or empty log file
 file_put_contents(FILENAME_LOG,"");

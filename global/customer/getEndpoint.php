@@ -13,22 +13,17 @@ require_once (__DIR__ . '../../../vendor/autoload.php');
 //This function is not on the same URL than other functions in the API (ie: on the global/non regional servers). So we need to define the configuration manually.
 $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration();
 
-//Change the URL to the new host
-$objConfiguration->setHost('https://prod.api.global.ezmax.com');
-
-print_r($objConfiguration);
+/**
+ * Retrieve the URL for stg ca-central-1
+ * @var String $sNewHost
+ */
+$sNewHost = $objConfiguration->getHostFromSettings(1);
 
 /*
-$sNewHost = $objConfiguration->getHostFromSettings(0, [
-    'sInfrastructureenvironmenttypeDescription' => 'dev',
-    'sInfrastructureregionCode' => 'local'
-]);
-
-
-
-
-die ();
-*/
+ * Change the URL to the new host.
+ * Make sure to call this function BEFORE you make your API request
+ */
+$objConfiguration->setHost($sNewHost);
  
 $objGlobalCustomerApi = new eZmaxAPI\Api\GlobalCustomerApi(new GuzzleHttp\Client(), $objConfiguration);
 
