@@ -14,7 +14,7 @@ require_once (__DIR__ . '../../../vendor/autoload.php');
 $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration();
 
 /**
- * Retrieve the URL for stg ca-central-1
+ * Retrieve the URL endpoint where to send your global API requests.
  * @var String $sNewHost
  */
 $sNewHost = $objConfiguration->getHostFromSettings(1);
@@ -25,17 +25,31 @@ $sNewHost = $objConfiguration->getHostFromSettings(1);
  */
 $objConfiguration->setHost($sNewHost);
  
+/**
+ * The global Customer API
+ * @var \eZmaxAPI\Api\GlobalCustomerApi $objGlobalCustomerApi
+ */
 $objGlobalCustomerApi = new eZmaxAPI\Api\GlobalCustomerApi(new GuzzleHttp\Client(), $objConfiguration);
 
-// string | The customer code assigned to your account
+/**
+ * The customer code assigned to your account
+ * @var String $pksCustomerCode
+ */
 $pksCustomerCode = 'demo1'; 
 
-// string | The infrastructure product Code If undefined, "appcluster01" is assumed
+/**
+ * The infrastructure product Code If undefined, "appcluster01" is assumed
+ * @var String $sInfrastructureproductCode
+ */
 $sInfrastructureproductCode = 'appcluster01'; 
 
 try {
-    $objglobalCustomerGetEndpointV1 = $objGlobalCustomerApi->globalCustomerGetEndpointV1($pksCustomerCode, $sInfrastructureproductCode);
-    print_r($objglobalCustomerGetEndpointV1);
+    /**
+     * The global customer response
+     * @var \eZmaxAPI\Api\Model\GlobalCustomerGetEndpointV1Response $objGlobalCustomerGetEndpointV1Response
+     */
+    $objGlobalCustomerGetEndpointV1Response = $objGlobalCustomerApi->globalCustomerGetEndpointV1($pksCustomerCode, $sInfrastructureproductCode);
+    print_r($objGlobalCustomerGetEndpointV1Response);
 }
 catch (Exception $e) {
     print_r($e);

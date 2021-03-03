@@ -12,14 +12,17 @@ use eZmaxAPI\Api\ObjectActivesessionApi;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objActivesessionApi = new ObjectActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectActivesessionApi $objObjectActivesessionApi
+ */
+$objObjectActivesessionApi = new ObjectActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
     
     /**
      * @var \eZmaxAPI\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
      */
-    $objActivesessionGetCurrentV1Response = $objActivesessionApi->activesessionGetCurrentV1();
+    $objActivesessionGetCurrentV1Response = $objObjectActivesessionApi->activesessionGetCurrentV1();
     
     //Output some attributes
     echo $objActivesessionGetCurrentV1Response->getMPayload()->getSCompanyNameX().PHP_EOL;

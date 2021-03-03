@@ -19,7 +19,10 @@ define('SAMPLE_pkiEzsignfolderID', 639);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfolderApi $objObjectEzsignfolderApi
+ */
+$objObjectEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 /**
  * This is the request content
@@ -46,14 +49,15 @@ try {
      */
     //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization($objEzsignfolderSendV1Request), JSON_PRETTY_PRINT) . PHP_EOL;
     
-    /*
+    /**
      * We only need to pass the pkiEzsignfolderID of the ezsign folder we want to send and the request containing the message if you want to send one
      * We got the pkiEzsignfolderID from a call to a previous ezsignfolderCreateObject.
+     * @var \eZmaxAPI\Model\EzsignfolderSendV1Response $objEzsignfolderSendV1Response
      */
-    $objEzsignfolderSendV1Response = $objEzsignfolderApi->ezsignfolderSendV1(SAMPLE_pkiEzsignfolderID, $objEzsignfolderSendV1Request);
+    $objEzsignfolderSendV1Response = $objObjectEzsignfolderApi->ezsignfolderSendV1(SAMPLE_pkiEzsignfolderID, $objEzsignfolderSendV1Request);
     
     // Uncomment this line to ouput complete response
-    print_r($objEzsignfolderSendV1Response);
+    //print_r($objEzsignfolderSendV1Response);
 } catch (Exception $e) {
     print_r($e);
 }

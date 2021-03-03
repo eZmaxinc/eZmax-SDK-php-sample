@@ -18,15 +18,19 @@ define ('SAMPLE_pkiEzsigndocumentID', 2144);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
-	/*
+	/**
 	 * We only need to pass the pkiID of the ezsign document we want to destroy.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
+	 * @var \eZmaxAPI\Model\EzsigndocumentDeleteObjectV1Response $objEzsigndocumentDeleteObjectV1Response
 	 */
-	$objEzsigndocumentDeleteObjectV1Response = $objEzsigndocumentApi->ezsigndocumentDeleteObjectV1(SAMPLE_pkiEzsigndocumentID);
+	$objEzsigndocumentDeleteObjectV1Response = $objObjectEzsigndocumentApi->ezsigndocumentDeleteObjectV1(SAMPLE_pkiEzsigndocumentID);
 	
 	//Uncomment this line to ouput complete response
 	//print_r($objEzsigndocumentDeleteObjectV1Response);

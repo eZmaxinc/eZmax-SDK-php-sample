@@ -12,7 +12,10 @@ use eZmaxAPI\Model\CommonGetAutocompleteV1Response;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objPeriodApi = new ObjectPeriodApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectPeriodApi $objObjectPeriodApi
+ */
+$objObjectPeriodApi = new ObjectPeriodApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	// Let's get all active periods of type Normal
@@ -20,7 +23,7 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormal');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('ActiveNormal');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -37,7 +40,7 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormalAndEndOfYear');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('ActiveNormalAndEndOfYear');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -53,7 +56,7 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('AllNormal');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('AllNormal');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -70,7 +73,7 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('AllNormalAndEndOfYear');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('AllNormalAndEndOfYear');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -87,7 +90,7 @@ try {
 	/**
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -104,7 +107,7 @@ try {
 	/**
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020-05');
+	$objCommonGetAutocompleteV1Response = $objObjectPeriodApi->periodGetAutocompleteV1('ActiveNormal', '2020-05');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;

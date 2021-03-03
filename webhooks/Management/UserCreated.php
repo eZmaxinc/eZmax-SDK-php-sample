@@ -23,13 +23,15 @@ function F_LOCAL_WriteToLog($sLogText){
 	file_put_contents(FILENAME_LOG,$sLogText. "\n" , FILE_APPEND);
 }
 
-
-//This object contain all objects we receive.
+/**
+ * This object contains all objects we receive.
+ * @var \eZmaxAPI\Model\WebhookUserUserCreated $objWebhookUserCreated 
+ */
 $objWebhookUserCreated =  ObjectSerializer::deserialize(file_get_contents("php://input"), "eZmaxAPI\\Model\\WebhookUserUserCreated");
 
 F_LOCAL_WriteToLog("Webhook received at \"".date('y-m-d H:i:s')."\"");
 
-//This object contain webhook object.
+//This object contains webhook object.
 $objWebhook = $objWebhookUserCreated->getObjWebhook();
 
 F_LOCAL_WriteToLog("ID of Webhook : {$objWebhook->getPkiWebhookID()}");
@@ -58,12 +60,10 @@ F_LOCAL_WriteToLog("URL configured in the webhook : {$objWebhook->getSWebhookUrl
 
 // Get Email configured in the webhook : email used when all attempt failed
 F_LOCAL_WriteToLog("Email configured in the webhook : {$objWebhook->getSWebhookEmailfailed()}");
-
-F_LOCAL_WriteToLog("\n" , FILE_APPEND);
-
+F_LOCAL_WriteToLog("\n");
 
 
-//This object contain list of previous attempt.
+//This object contains list of previous attempt.
 $a_objAttempt = $objWebhookUserCreated->getAObjAttempt();
 if(count($a_objAttempt) == 0){
 	F_LOCAL_WriteToLog("We don\'t have previous attempts. Webhook was passed on the first try.");
@@ -86,16 +86,13 @@ else{
 	}
 }
 
-F_LOCAL_WriteToLog("\n" , FILE_APPEND);
+F_LOCAL_WriteToLog("\n");
 
-//This object contain Ezsign User information.
+//This object contains Ezsign User information.
 $objUser = $objWebhookUserCreated->getObjUser();
-
-//var_dump(get_class_methods($objUser));exit;
 
 F_LOCAL_WriteToLog("ID of User : ".$objUser->getPkiUserID());
 F_LOCAL_WriteToLog("User Loginname of User : ".$objUser->getSUserLoginname());
-
 
 // If everything went well, send HTTP status code 204 so the calling server everything was successful and no more attempts should be made
 header("HTTP/1.1 204");

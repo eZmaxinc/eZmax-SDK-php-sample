@@ -18,15 +18,19 @@ define ('SAMPLE_pkiEzsignfolderID', 643);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfolderApi $objObjectEzsignfolderApi
+ */
+$objObjectEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
-	/*
+	/**
 	 * We only need to pass the pkiID of the ezsign folder we want to destroy.
 	 * We got it from a call to a previous ezsignfolderCreateObject
+	 * @var \eZmaxAPI\Model\EzsignfolderDeleteObjectV1Response $objEzsignfolderDeleteObjectV1Response
 	 */
-	$objEzsignfolderDeleteObjectV1Response = $objEzsignfolderApi->ezsignfolderDeleteObjectV1(SAMPLE_pkiEzsignfolderID);
+	$objEzsignfolderDeleteObjectV1Response = $objObjectEzsignfolderApi->ezsignfolderDeleteObjectV1(SAMPLE_pkiEzsignfolderID);
 	
 	//Uncomment this line to ouput complete response
 	//print_r($objEzsignfolderDeleteObjectV1Response);
