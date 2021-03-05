@@ -3,6 +3,8 @@
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\ObjectSerializer;
 
+require_once (__DIR__ . '/../../connector.php');
+
 
 // Set timezone
 date_default_timezone_set('America/Montreal');
