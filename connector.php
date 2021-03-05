@@ -18,7 +18,7 @@ else {
      * Create the configuration object that will be passed to the API.
      * Specify your API key to access the API.
      */
-    $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'CHANGE_ME');
+    $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'ThisIsMyAuthorizationKey');
     
 }
 
