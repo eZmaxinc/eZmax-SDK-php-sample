@@ -12,7 +12,10 @@ use eZmaxAPI\Model\CommonGetAutocompleteV1Response;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objFranchisebrokerApi = new ObjectFranchisebrokerApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectFranchisebrokerApi $objObjectFranchisebrokerApi
+ */
+$objObjectFranchisebrokerApi = new ObjectFranchisebrokerApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	// Let's get all active franchise broker
@@ -20,15 +23,12 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active');
+	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
-	
-	
-	
 	
 	
 	
@@ -37,16 +37,12 @@ try {
 	/**
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active', 'Jean');
+	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active', 'Jean');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
-	
-	
-	
-	
 	
 	
 	// Let's get all active franchise broker
@@ -54,7 +50,7 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All');
+	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
@@ -62,17 +58,14 @@ try {
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
 	
 	
-	
-	
-	
-	
+		
 	
 	// Let's get all franchise broker with either sContactFirstname LIKE 'Jean%' or sContactLastname LIKE 'Jean%' or sFranchisebrokerLicense = 'Jean'
 	
 	/**
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All', 'Jean');
+	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All', 'Jean');
 	
 	//Output some attributes
 	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;

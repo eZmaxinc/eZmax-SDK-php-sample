@@ -18,15 +18,19 @@ define ('SAMPLE_pkiEzsignfoldersignerassociationID', 112);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfoldersignerassociationApi 
+ */
+$objObjectEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 
-	/*
+	/**
 	 * We need to pass the pkiID of the ezsign document we want to get and the type of document we want : "Signed" for signed document.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
+	 * @var \eZmaxAPI\Model\EzsigndocumentGetLoginUrlV1Response $objEzsigndocumentGetLoginUrlV1Response
 	 */
-	$objEzsigndocumentGetLoginUrlV1Response = $objEzsignfoldersignerassociationApi->ezsignfoldersignerassociationGetInPersonLoginUrlV1(SAMPLE_pkiEzsignfoldersignerassociationID);
+	$objEzsigndocumentGetLoginUrlV1Response = $objObjectEzsignfoldersignerassociationApi->ezsignfoldersignerassociationGetInPersonLoginUrlV1(SAMPLE_pkiEzsignfoldersignerassociationID);
 
 	// Let's retrieve some data from the object and display it
 	echo 'Url: '.$objEzsigndocumentGetLoginUrlV1Response->getMPayload()->getSLoginUrl().PHP_EOL;

@@ -22,13 +22,16 @@ define ('SAMPLE_pkiUserID', 11);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objApikeyApi = new ObjectApikeyApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectApikeyApi $objObjectApikeyApi
+ */
+$objObjectApikeyApi = new ObjectApikeyApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objApikeyCreateObjectV1Request = [];
 
 /**
- * This is the object that will contain either a objApikey or a objApikeyCompound
+ * This is the object that will contains either a objApikey or a objApikeyCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\ApikeyCreateObjectV1Request $objApikeyCreateObjectV1Request
  */
@@ -43,7 +46,10 @@ $objApikeyRequest = new ApikeyRequest();
 //This will link the Apikey to an existing user. This value was returned after a successful User creation. 
 $objApikeyRequest->setFkiUserID(SAMPLE_pkiUserID);
 
-//Create an object containing all the translation for the description
+/**
+ * Create an object containing all the translation for the description
+ * @var \eZmaxAPI\Model\MultilingualApikeyDescription $objMultilingualApikeyDescription
+ */
 $objMultilingualApikeyDescription = new MultilingualApikeyDescription();
 
 //Set the french description of the apikey.
@@ -72,7 +78,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\ApikeyCreateObjectV1Response $objApikeyCreateObjectV1Response
      */
-    $objApikeyCreateObjectV1Response = $objApikeyApi->apikeyCreateObjectV1($a_objApikeyCreateObjectV1Request);
+    $objApikeyCreateObjectV1Response = $objObjectApikeyApi->apikeyCreateObjectV1($a_objApikeyCreateObjectV1Request);
     
     /*
      * The server will return a unique objApikeyResponse of each created Apikey in the same order they were in the $a_objApikeyCreateObjectV1Request array.

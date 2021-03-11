@@ -13,34 +13,43 @@ require_once (__DIR__ . '../../../vendor/autoload.php');
 //This function is not on the same URL than other functions in the API (ie: on the global/non regional servers). So we need to define the configuration manually.
 $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration();
 
-//Change the URL to the new host
-$objConfiguration->setHost('https://prod.api.global.ezmax.com');
-
-print_r($objConfiguration);
+/**
+ * Retrieve the URL endpoint where to send your global API requests.
+ * @var String $sNewHost
+ */
+$sNewHost = $objConfiguration->getHostFromSettings(1);
 
 /*
-$sNewHost = $objConfiguration->getHostFromSettings(0, [
-    'sInfrastructureenvironmenttypeDescription' => 'dev',
-    'sInfrastructureregionCode' => 'local'
-]);
-
-
-
-
-die ();
-*/
+ * Change the URL to the new host.
+ * Make sure to call this function BEFORE you make your API request
+ */
+$objConfiguration->setHost($sNewHost);
  
+/**
+ * The global Customer API
+ * @var \eZmaxAPI\Api\GlobalCustomerApi $objGlobalCustomerApi
+ */
 $objGlobalCustomerApi = new eZmaxAPI\Api\GlobalCustomerApi(new GuzzleHttp\Client(), $objConfiguration);
 
-// string | The customer code assigned to your account
+/**
+ * The customer code assigned to your account
+ * @var String $pksCustomerCode
+ */
 $pksCustomerCode = 'demo1'; 
 
-// string | The infrastructure product Code If undefined, "appcluster01" is assumed
+/**
+ * The infrastructure product Code If undefined, "appcluster01" is assumed
+ * @var String $sInfrastructureproductCode
+ */
 $sInfrastructureproductCode = 'appcluster01'; 
 
 try {
-    $objglobalCustomerGetEndpointV1 = $objGlobalCustomerApi->globalCustomerGetEndpointV1($pksCustomerCode, $sInfrastructureproductCode);
-    print_r($objglobalCustomerGetEndpointV1);
+    /**
+     * The global customer response
+     * @var \eZmaxAPI\Api\Model\GlobalCustomerGetEndpointV1Response $objGlobalCustomerGetEndpointV1Response
+     */
+    $objGlobalCustomerGetEndpointV1Response = $objGlobalCustomerApi->globalCustomerGetEndpointV1($pksCustomerCode, $sInfrastructureproductCode);
+    print_r($objGlobalCustomerGetEndpointV1Response);
 }
 catch (Exception $e) {
     print_r($e);
