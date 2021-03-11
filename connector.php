@@ -14,9 +14,10 @@ if (is_readable(__DIR__ . '/environment.php')) {
     require (__DIR__ . '/environment.php');
 }
 else {
-    /*
+    /**
      * Create the configuration object that will be passed to the API.
      * Specify your API key to access the API.
+     * @var \eZmaxAPI\Configuration $objConfiguration
      */
     $objConfiguration = eZmaxAPI\Configuration::getDefaultConfiguration()
     					->setApiKey('Authorization', 'ThisIsMyAuthorizationKey')

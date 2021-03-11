@@ -18,15 +18,19 @@ define ('SAMPLE_pkiEzsigndocumentID', 680);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
-	/*
+	/**
 	 * We only need to pass the pkiID of the ezsign document we want to get.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
+	 * @var \eZmaxAPI\Model\EzsigndocumentGetObjectV1Response $objEzsigndocumentGetObjectV1Response
 	 */
-	$objEzsigndocumentGetObjectV1Response = $objEzsigndocumentApi->ezsigndocumentGetObjectV1(SAMPLE_pkiEzsigndocumentID);
+	$objEzsigndocumentGetObjectV1Response = $objObjectEzsigndocumentApi->ezsigndocumentGetObjectV1(SAMPLE_pkiEzsigndocumentID);
 	
 	// Let's retrieve some data from the object and display it
 	echo 'ID: '.$objEzsigndocumentGetObjectV1Response->getMPayload()->getPkiEzsigndocumentID().PHP_EOL;

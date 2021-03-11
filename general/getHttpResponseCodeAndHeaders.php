@@ -1,7 +1,7 @@
 <?php
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
-use eZmaxAPI\Api\ActivesessionApi;
+use eZmaxAPI\Api\ObjectActivesessionApi;
 
 /**
  * This sample shows how to retrieve the HTTP status code and the Response Headers when issuing a request.
@@ -12,7 +12,11 @@ use eZmaxAPI\Api\ActivesessionApi;
 
 require_once (__DIR__ . '/../connector.php');
 
-$objActivesessionApi = new ActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * Retrieve the details about the current activesession
+ * @var \eZmaxAPI\Client\Api\ObjectActivesessionApi $objObjectActivesessionApi
+ */
+$objObjectActivesessionApi = new ObjectActivesessionApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 
@@ -21,17 +25,17 @@ try {
      * You'll notice the response is returned directly so you can set your variable to the return of the function;
      * You'll also notice the function DOESN'T have the "WithHttpInfo" as a suffix.
      * Below, you can see in comment, the simplified line.
-     * 
+     * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $objActivesessionGetCurrentV1Response
      */
-     //$objActivesessionGetCurrentV1Response = $objActivesessionApi->activesessionGetCurrentV1();
+     //$objActivesessionGetCurrentV1Response = $objObjectActivesessionApi->activesessionGetCurrentV1();
     
     /**
      * Here you have the version with "WithHttpInfo" as a suffix.
      * You'll notice the function returns an array that we map to distinct values
      * All the api functions can be called with "WithHttpInfo" if needed.
-     * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $ActivesessionGetCurrentV1Response
+     * @var \eZmaxAPI\Client\Model\ActivesessionGetCurrentV1Response $objActivesessionGetCurrentV1Response
      */
-    list($objActivesessionGetCurrentV1Response, $iHttpCode, $a_Headers) = $objActivesessionApi->activesessionGetCurrentV1WithHttpInfo();
+    list($objActivesessionGetCurrentV1Response, $iHttpCode, $a_Headers) = $objObjectActivesessionApi->activesessionGetCurrentV1WithHttpInfo();
     
     //Output the HTTP return code
     echo "Http return code: $iHttpCode".PHP_EOL;

@@ -21,15 +21,18 @@ define ('SAMPLE_pkiEzsignfolderID', 656);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objEzsigndocumentCreateObjectV1Request = [];
 
 /********************************** EXAMPLE Ezsigndocument Only Base64 Pdf (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsigndocument or a objEzsigndocumentCompound
+ * This is the object that will contains either a objEzsigndocument or a objEzsigndocumentCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Request $objEzsigndocumentCreateObjectV1Request
  */
@@ -51,9 +54,6 @@ $objEzsigndocumentRequest->setFkiLanguageID(2);
 
 //Set the Ezsigndocument name. The name of the document that will be presented to Ezsignsigners
 $objEzsigndocumentRequest->setSEzsigndocumentName('Important contract');
-
-//The actual file name that will be used when downloading or attaching to an email.
-$objEzsigndocumentRequest->setSEzsigndocumentFilename('Important Contract.pdf');
 
 //The Ezsignsigners will have up to that specific date/time to sign the documents. In this example, we'll give them 5 days from now
 $dtEzsigndocumentDuedate = date('Y-m-d H:i:s', strtotime("+5 days"));
@@ -84,7 +84,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Response $objEzsigndocumentCreateObjectV1Response
      */
-    $objEzsigndocumentCreateObjectV1Response = $objEzsigndocumentApi->ezsigndocumentCreateObjectV1($a_objEzsigndocumentCreateObjectV1Request);
+    $objEzsigndocumentCreateObjectV1Response = $objObjectEzsigndocumentApi->ezsigndocumentCreateObjectV1($a_objEzsigndocumentCreateObjectV1Request);
     
     /*
      * The server will return the unique pkiEzsigndocumentID of each created Ezsigndocument in the same order they were in the $a_objEzsigndocumentCreateObjectV1Request array.

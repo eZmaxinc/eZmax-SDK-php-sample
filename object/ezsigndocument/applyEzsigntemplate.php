@@ -37,8 +37,10 @@ $a_pkiEzsignfoldersignerassociationID = [
 
 require_once (__DIR__ . '/../../connector.php');
 
-
-$objEzsigndocumentApi = new eZmaxAPI\Api\ObjectEzsigndocumentApi(new GuzzleHttp\Client(),$objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new eZmaxAPI\Api\ObjectEzsigndocumentApi(new GuzzleHttp\Client(),$objConfiguration);
 
 /**
  * For this example, let's create an objEzsigndocumentApplyEzsigntemplate 
@@ -65,7 +67,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsigndocumentApplyEzsigntemplateV1Response $objEzsigndocumentApplyEzsigntemplateV1Response
      */
-    $objEzsigndocumentApplyEzsigntemplateV1Response = $objEzsigndocumentApi->ezsigndocumentApplyEzsigntemplateV1(SAMPLE_pkiEzsigndocumentID, $objEzsigndocumentApplyEzsigntemplateRequest);
+    $objEzsigndocumentApplyEzsigntemplateV1Response = $objObjectEzsigndocumentApi->ezsigndocumentApplyEzsigntemplateV1(SAMPLE_pkiEzsigndocumentID, $objEzsigndocumentApplyEzsigntemplateRequest);
 	
     print_r($objEzsigndocumentApplyEzsigntemplateV1Response);
 } catch (Exception $e) {

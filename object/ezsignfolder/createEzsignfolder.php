@@ -13,15 +13,18 @@ use eZmaxAPI\Model\EzsignfolderRequest;
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfolderApi $objObjectEzsignfolderApi
+ */
+$objObjectEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objEzsignfolderCreateObjectV1Request = [];
 
 /********************************** EXAMPLE Ezsignfolder Only (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsignfolder or a objEzsignfolderCompound
+ * This is the object that will contains either a objEzsignfolder or a objEzsignfolderCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Request $objEzsignfolderCreateObjectV1Request
  */
@@ -67,7 +70,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
      */
-    $objEzsignfolderCreateObjectV1Response = $objEzsignfolderApi->ezsignfolderCreateObjectV1($a_objEzsignfolderCreateObjectV1Request);
+    $objEzsignfolderCreateObjectV1Response = $objObjectEzsignfolderApi->ezsignfolderCreateObjectV1($a_objEzsignfolderCreateObjectV1Request);
     
     /*
      * The server will return the unique pkiEzsignfolderID of each created Ezsignfolder in the same order they were in the $a_objEzsignfolderCreateObjectV1Request array.
