@@ -33,7 +33,10 @@ define ('SAMPLE_sDocumentTypeProofdocument', 'Proofdocument');
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 
@@ -41,7 +44,7 @@ try {
 	 * We need to pass the pkiID of the ezsign document we want to get and the type of document we want : "Signed" for signed document.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
 	 */
-	$objEzsigndocumentGetDownloadUrlV1Response = $objEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeSigned);
+	$objEzsigndocumentGetDownloadUrlV1Response = $objObjectEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeSigned);
 
 	// Let's retrieve some data from the object and display it
 	//echo 'Url: '.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl().PHP_EOL;
@@ -50,11 +53,12 @@ try {
 	file_put_contents(__DIR__ . '/document.pdf', file_get_contents('compress.zlib://'.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl()));
 
 
-	/*
+	/**
 	 * We need to pass the pkiID of the ezsign document we want to get and the type of document we want : "Proof" for the complete proof.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
+	 * @var \eZmaxAPI\Model\EzsigndocumentGetDownloadUrlV1Response $objEzsigndocumentGetDownloadUrlV1Response
 	 */
-	$objEzsigndocumentGetDownloadUrlV1Response = $objEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeProof);
+	$objEzsigndocumentGetDownloadUrlV1Response = $objObjectEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeProof);
 
 	// Let's retrieve some data from the object and display it
 	//echo 'Url: '.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl().PHP_EOL;
@@ -66,11 +70,12 @@ try {
 	file_put_contents(__DIR__ . '/proof.zip', file_get_contents('compress.zlib://'.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl()));
 
 
-	/*
+	/**
 	 * We need to pass the pkiID of the ezsign document we want to get and the type of document we want : "Proof" for the proof pdf document.
 	 * We got it from a call to a previous ezsigndocumentCreateObject
+	 * @var \eZmaxAPI\Model\EzsigndocumentGetDownloadUrlV1Response $objEzsigndocumentGetDownloadUrlV1Response
 	 */
-	$objEzsigndocumentGetDownloadUrlV1Response = $objEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeProofdocument);
+	$objEzsigndocumentGetDownloadUrlV1Response = $objObjectEzsigndocumentApi->ezsigndocumentGetDownloadUrlV1(SAMPLE_pkiEzsigndocumentID,SAMPLE_sDocumentTypeProofdocument);
 
 	// Let's retrieve some data from the object and display it
 	//echo 'Url: '.$objEzsigndocumentGetDownloadUrlV1Response->getMPayload()->getSDownloadUrl().PHP_EOL;

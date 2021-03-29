@@ -25,12 +25,15 @@ function F_LOCAL_WriteToLog($sLogText){
 }
 
 
-//This object contain all objects we receive.
+/**
+ * This object contains all objects we receive.
+ * @var \eZmaxAPI\Model\WebhookEzsignDocumentCompleted
+ */
 $objWebhookEzsignDocumentCompleted =  ObjectSerializer::deserialize(file_get_contents("php://input"), "eZmaxAPI\\Model\\WebhookEzsignDocumentCompleted");
 
 F_LOCAL_WriteToLog("Webhook received at \"".date('y-m-d H:i:s')."\"");
 
-//This object contain webhook object.
+//This object contains webhook object.
 $objWebhook = $objWebhookEzsignDocumentCompleted->getObjWebhook();
 
 F_LOCAL_WriteToLog("ID of Webhook : {$objWebhook->getPkiWebhookID()}");
@@ -64,7 +67,7 @@ F_LOCAL_WriteToLog("\n" , FILE_APPEND);
 
 
 
-//This object contain list of previous attempt.
+//This object contains list of previous attempt.
 $a_objAttempt = $objWebhookEzsignDocumentCompleted->getAObjAttempt();
 if(count($a_objAttempt) == 0){
 	F_LOCAL_WriteToLog("We don\'t have previous attempts. Webhook was passed on the first try.");
@@ -90,7 +93,7 @@ F_LOCAL_WriteToLog("\n" , FILE_APPEND);
 
 
 
-//This object contain EzsignDocument information.
+//This object contains EzsignDocument information.
 $objEzsigndocument = $objWebhookEzsignDocumentCompleted->getObjEzsigndocument();
 
 F_LOCAL_WriteToLog("ID of document : ".$objEzsigndocument->getPkiEzsigndocumentID());

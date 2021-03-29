@@ -31,13 +31,16 @@ define ('SAMPLE_fkiPhonetypeID', 1); // Office
 define ('SAMPLE_fkiEmailtypeID', 1); // Office
 define ('SAMPLE_fkiWebsitetypeID', 1); // Website
 
-$objFranchisereferalincomeApi = new ObjectFranchisereferalincomeApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectFranchisereferalincomeApi $objObjectFranchisereferalincomeApi
+ */
+$objObjectFranchisereferalincomeApi = new ObjectFranchisereferalincomeApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objFranchisereferalincomeCreateObjectV1Request = [];
 
 /**
- * This is the object that will contain a objFranchisereferalincomeCreateObjectV1Request to create
+ * This is the object that will contains a objFranchisereferalincomeCreateObjectV1Request to create
  * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request $objFranchisereferalincomeCreateObjectV1Request
 */
 $objFranchisereferalincomeCreateObjectV1Request = new FranchisereferalincomeCreateObjectV1Request ();
@@ -253,6 +256,7 @@ $a_objEmailRequestContact = [];
 
 /**
  * Creates a new email object
+ * @var \eZmaxAPI\Model\EmailRequest $objEmailRequestContact
  */
 $objEmailRequestContact = new EmailRequest();
 
@@ -278,6 +282,7 @@ $a_objPhoneRequestContact = [];
 
 /**
  * Creates a new phone object
+ * @var \eZmaxAPI\Model\PhoneRequest $objEmailRequestContact
  */
 $objPhoneRequestContact = new PhoneRequest();
 
@@ -327,6 +332,7 @@ $a_objPhoneRequestContact[] = $objPhoneRequestContact;
 $a_objWebsiteRequest = [];
 /**
  * Create a new website object
+ * @var \eZmaxAPI\Model\WebsiteRequest $objWebsiteRequestContact
  */
 $objWebsiteRequestContact = new WebsiteRequest();
 
@@ -417,7 +423,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server
      * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Response $objFranchisereferalincomeCreateObjectV1Response
      */
-    $objFranchisereferalincomeCreateObjectV1Response = $objFranchisereferalincomeApi->franchisereferalincomeCreateObjectV1($a_objFranchisereferalincomeCreateObjectV1Request);
+    $objFranchisereferalincomeCreateObjectV1Response = $objObjectFranchisereferalincomeApi->franchisereferalincomeCreateObjectV1($a_objFranchisereferalincomeCreateObjectV1Request);
     
     /*
      * The server will return the unique pkiFranchisereferalincomeID of each created franchise referal income in the same order they were in the $a_objFranchisereferalincomeCreateObjectV1Request array.

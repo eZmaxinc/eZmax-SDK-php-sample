@@ -16,7 +16,10 @@ require_once (__DIR__ . '/../../connector.php');
 define ('SAMPLE_fkiEzsigndocumentID', 659);
 define ('SAMPLE_fkiEzsignfoldersignerassociationID', 431);
 
-$objEzsignsignatureApi = new ObjectEzsignsignatureApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignsignatureApi $objObjectEzsignsignatureApi
+ */
+$objObjectEzsignsignatureApi = new ObjectEzsignsignatureApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contain all the objects we want to create.
 $a_objEzsignsignatureCreateObjectV1Request = [];
@@ -72,7 +75,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server
      * @var \eZmaxAPI\Model\EzsignsignatureCreateObjectV1Response $objEzsignsignatureCreateObjectV1Response
      */
-    $objEzsignsignatureCreateObjectV1Response = $objEzsignsignatureApi->ezsignsignatureCreateObjectV1($a_objEzsignsignatureCreateObjectV1Request);
+    $objEzsignsignatureCreateObjectV1Response = $objObjectEzsignsignatureApi->ezsignsignatureCreateObjectV1($a_objEzsignsignatureCreateObjectV1Request);
 
     /*
      * The server will return the unique pkiEzsignsignatureID of each created ezsign signature in the same order they were in the $a_objEzsignsignatureCreateObjectV1Request array.

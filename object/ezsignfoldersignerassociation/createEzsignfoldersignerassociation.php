@@ -20,20 +20,23 @@ use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
  * This value was returned after a successful Ezsignfolder creation.
  */
 
-define ('SAMPLE_pkiEzsignfolderID', 629);
-define ('SAMPLE_pkiUserID', 4);
+define ('SAMPLE_pkiEzsignfolderID', 8);
+define ('SAMPLE_pkiUserID', 5);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfoldersignerassociationApi $objObjectEzsignfoldersignerassociationApi
+ */
+$objObjectEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objEzsignfoldersignerassociationCreateObjectV1Request = [];
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user in the office (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+ * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
@@ -64,7 +67,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Email Validation (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+ * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
@@ -92,7 +95,10 @@ $objEzsignsignerRequestCompound->setFkiTaxassignmentID(1);
 // This will set the authentification method of the signer.
 $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('Password');
 
-// Let's create the object containing the informations of the contact of the signer
+/** 
+ * Let's create the object containing the informations of the contact of the signer
+ * @var \eZmaxAPI\Model\EzsignsignerRequestCompoundContact $objEzsignsignerRequestCompoundContact
+ **/
 $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
 
 // Sets the first name
@@ -125,7 +131,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone + Email Validation (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+ * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
@@ -153,7 +159,10 @@ $objEzsignsignerRequestCompound->setFkiTaxassignmentID(1);
 // This will set the authentification method of the signer.
 $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('PasswordPhone');
 
-// Let's create the object containing the informations of the contact of the signer
+/**
+ * Let's create the object containing the informations of the contact of the signer
+ * @var \eZmaxAPI\Model\EzsignsignerRequestCompoundContact $objEzsignsignerRequestCompoundContact
+ */
 $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
 
 // Sets the first name
@@ -192,7 +201,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Secret question Validation (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+ * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
  */
@@ -226,7 +235,10 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  // This will set the authentification method of the signer.
  $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('PasswordQuestion');
  
- // Let's create the object containing the informations of the contact of the signer
+  /**
+  * Let's create the object containing the informations of the contact of the signer
+  * @var \eZmaxAPI\Model\EzsignsignerRequestCompoundContact $objEzsignsignerRequestCompoundContact
+  */
  $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
  
  // Sets the first name
@@ -260,7 +272,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone (Begin) **********************************/
  
  /**
-  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+  * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
   * depending on the type of object you want to create.
   * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
   */
@@ -288,7 +300,11 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  // This will set the authentification method of the signer.
  $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('InPersonPhone');
  
- // Let's create the object containing the informations of the contact of the signer
+ 
+ /**
+  * Let's create the object containing the informations of the contact of the signer
+  * @var \eZmaxAPI\Model\EzsignsignerRequestCompoundContact $objEzsignsignerRequestCompoundContact
+  */
  $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
  
  // Sets the first name
@@ -325,7 +341,7 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office without SMS/Phone (Begin) **********************************/
  
  /**
-  * This is the object that will contain either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
+  * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
   * depending on the type of object you want to create.
   * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
   */
@@ -353,7 +369,10 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  // This will set the authentification method of the signer.
  $objEzsignsignerRequestCompound->setEEzsignsignerLogintype('InPerson');
  
- // Let's create the object containing the informations of the contact of the signer
+ /**
+  * Let's create the object containing the informations of the contact of the signer
+  * @var \eZmaxAPI\Model\EzsignsignerRequestCompoundContact $objEzsignsignerRequestCompoundContact
+  */
  $objEzsignsignerRequestCompoundContact = new EzsignsignerRequestCompoundContact();
  
  // Sets the first name
@@ -393,7 +412,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Response $objEzsignfoldersignerassociationCreateObjectV1Response
      */
-    $objEzsignfoldersignerassociationCreateObjectV1Response = $objEzsignfoldersignerassociationApi->EzsignfoldersignerassociationCreateObjectV1($a_objEzsignfoldersignerassociationCreateObjectV1Request);
+    $objEzsignfoldersignerassociationCreateObjectV1Response = $objObjectEzsignfoldersignerassociationApi->EzsignfoldersignerassociationCreateObjectV1($a_objEzsignfoldersignerassociationCreateObjectV1Request);
     
     /*
      * The server will return the unique pkiEzsignfoldersignerassociationID of each created Ezsignfoldersignerassociation in the same order they were in the $a_objEzsignfoldersignerassociationCreateObjectV1Request array.

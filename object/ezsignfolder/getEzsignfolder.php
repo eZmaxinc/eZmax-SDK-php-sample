@@ -18,15 +18,19 @@ define ('SAMPLE_pkiEzsignfolderID', 220);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsignfolderApi 
+ */
+$objObjectEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 try {
 	
-	/*
+	/**
 	 * We only need to pass the pkiID of the ezsign folder we want to get.
 	 * We got it from a call to a previous ezsignfolderCreateObject
+	 * @var \eZmaxAPI\Model\EzsignfolderGetObjectV1Response $objEzsignfolderGetObjectV1Response
 	 */
-	$objEzsignfolderGetObjectV1Response = $objEzsignfolderApi->ezsignfolderGetObjectV1(SAMPLE_pkiEzsignfolderID);
+	$objEzsignfolderGetObjectV1Response = $objObjectEzsignfolderApi->ezsignfolderGetObjectV1(SAMPLE_pkiEzsignfolderID);
 	
 	// Let's retrieve some data from the object and display it
 	echo 'ID: '.$objEzsignfolderGetObjectV1Response->getMPayload()->getPkiEzsignfolderID().PHP_EOL;

@@ -17,19 +17,22 @@ use eZmaxAPI\Model\EzsigndocumentRequest;
  * This value was returned after a successful Ezsignfolder creation.
  */
  
-define ('SAMPLE_pkiEzsignfolderID', 656);
+define ('SAMPLE_pkiEzsignfolderID', 8);
 
 require_once (__DIR__ . '/../../connector.php');
 
-$objEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
+/**
+ * @var \eZmaxAPI\Api\ObjectEzsigndocumentApi $objObjectEzsigndocumentApi
+ */
+$objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(), $objConfiguration);
 
-//This array will contain all the objects we want to create.
+//This array will contains all the objects we want to create.
 $a_objEzsigndocumentCreateObjectV1Request = [];
 
 /********************************** EXAMPLE Ezsigndocument Only Base64 Pdf (Begin) **********************************/
 
 /**
- * This is the object that will contain either a objEzsigndocument or a objEzsigndocumentCompound
+ * This is the object that will contains either a objEzsigndocument or a objEzsigndocumentCompound
  * depending on the type of object you want to create.
  * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Request $objEzsigndocumentCreateObjectV1Request
  */
@@ -81,7 +84,7 @@ try {
      * Now that all the objects are ready in the array to save, let's send the request to the server 
      * @var \eZmaxAPI\Model\EzsigndocumentCreateObjectV1Response $objEzsigndocumentCreateObjectV1Response
      */
-    $objEzsigndocumentCreateObjectV1Response = $objEzsigndocumentApi->ezsigndocumentCreateObjectV1($a_objEzsigndocumentCreateObjectV1Request);
+    $objEzsigndocumentCreateObjectV1Response = $objObjectEzsigndocumentApi->ezsigndocumentCreateObjectV1($a_objEzsigndocumentCreateObjectV1Request);
     
     /*
      * The server will return the unique pkiEzsigndocumentID of each created Ezsigndocument in the same order they were in the $a_objEzsigndocumentCreateObjectV1Request array.
