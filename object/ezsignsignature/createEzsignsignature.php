@@ -13,8 +13,8 @@ use eZmaxAPI\Model\EzsignsignatureRequest;
 
 require_once (__DIR__ . '/../../connector.php');
 
-define ('SAMPLE_fkiEzsigndocumentID', 659);
-define ('SAMPLE_fkiEzsignfoldersignerassociationID', 431);
+define ('SAMPLE_fkiEzsigndocumentID', 1894);
+define ('SAMPLE_fkiEzsignfoldersignerassociationID', 791);
 
 /**
  * @var \eZmaxAPI\Api\ObjectEzsignsignatureApi $objObjectEzsignsignatureApi
@@ -31,7 +31,7 @@ $a_objEzsignsignatureCreateObjectV1Request = [];
 $objEzsignsignatureCreateObjectV1Request = new EzsignsignatureCreateObjectV1Request ();
 
 /**
- * For this example, let's create an objEzsignsignature
+ * For this example, let's create an objEzsignsignature type of Name
  * @var \eZmaxAPI\Model\EzsignsignatureRequest $objEzsignsignatureRequest
  */
 $objEzsignsignatureRequest = new EzsignsignatureRequest();
@@ -56,6 +56,127 @@ $objEzsignsignatureRequest->setIEzsignsignatureStep(1);
 
 // Sets the type of ezsign signature. 
 $objEzsignsignatureRequest->setEEzsignsignatureType('Name');
+
+// Sets the objEzsignsignature to the request object
+$objEzsignsignatureCreateObjectV1Request->setObjEzsignsignature($objEzsignsignatureRequest);
+
+
+//Finally push the request to the array of objects to save
+$a_objEzsignsignatureCreateObjectV1Request[] = $objEzsignsignatureCreateObjectV1Request;
+
+
+/**
+ * This is the object that will contain a objEzsignsignature to create
+ * @var \eZmaxAPI\Model\EzsignsignatureCreateObjectV1Request $objEzsignsignatureCreateObjectV1Request
+ */
+$objEzsignsignatureCreateObjectV1Request = new EzsignsignatureCreateObjectV1Request ();
+
+/**
+ * For this example, let's create an objEzsignsignature type of City
+ * @var \eZmaxAPI\Model\EzsignsignatureRequest $objEzsignsignatureRequest
+ */
+$objEzsignsignatureRequest = new EzsignsignatureRequest();
+
+// Sets which ezsign document will contain the new ezsign signature
+$objEzsignsignatureRequest->setFkiEzsigndocumentID(SAMPLE_fkiEzsigndocumentID);
+
+// Set who will have to sign the ezisgn signature. ID gotten from a previous request on createEzsignfoldersignerassociation
+$objEzsignsignatureRequest->setFkiEzsignfoldersignerassociationID(SAMPLE_fkiEzsignfoldersignerassociationID);
+
+// The page number in the ezsign document.
+$objEzsignsignatureRequest->setIEzsignpagePagenumber(1);
+
+// Sets the X coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureX(200);
+
+// Sets the Y coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureY(250);
+
+// Sets in which step the ezsign signature will be signed. 
+$objEzsignsignatureRequest->setIEzsignsignatureStep(1);
+
+// Sets the type of ezsign signature. 
+$objEzsignsignatureRequest->setEEzsignsignatureType('City');
+
+// Sets the objEzsignsignature to the request object
+$objEzsignsignatureCreateObjectV1Request->setObjEzsignsignature($objEzsignsignatureRequest);
+
+
+//Finally push the request to the array of objects to save
+$a_objEzsignsignatureCreateObjectV1Request[] = $objEzsignsignatureCreateObjectV1Request;
+
+/**
+ * This is the object that will contain a objEzsignsignature to create
+ * @var \eZmaxAPI\Model\EzsignsignatureCreateObjectV1Request $objEzsignsignatureCreateObjectV1Request
+ */
+$objEzsignsignatureCreateObjectV1Request = new EzsignsignatureCreateObjectV1Request ();
+
+/**
+ * For this example, let's create an objEzsignsignature type of Initials
+ * @var \eZmaxAPI\Model\EzsignsignatureRequest $objEzsignsignatureRequest
+ */
+$objEzsignsignatureRequest = new EzsignsignatureRequest();
+
+// Sets which ezsign document will contain the new ezsign signature
+$objEzsignsignatureRequest->setFkiEzsigndocumentID(SAMPLE_fkiEzsigndocumentID);
+
+// Set who will have to sign the ezisgn signature. ID gotten from a previous request on createEzsignfoldersignerassociation
+$objEzsignsignatureRequest->setFkiEzsignfoldersignerassociationID(SAMPLE_fkiEzsignfoldersignerassociationID);
+
+// The page number in the ezsign document.
+$objEzsignsignatureRequest->setIEzsignpagePagenumber(1);
+
+// Sets the X coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureX(200);
+
+// Sets the Y coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureY(200);
+
+// Sets in which step the ezsign signature will be signed. 
+$objEzsignsignatureRequest->setIEzsignsignatureStep(1);
+
+// Sets the type of ezsign signature. 
+$objEzsignsignatureRequest->setEEzsignsignatureType('Initials');
+
+// Sets the objEzsignsignature to the request object
+$objEzsignsignatureCreateObjectV1Request->setObjEzsignsignature($objEzsignsignatureRequest);
+
+
+//Finally push the request to the array of objects to save
+$a_objEzsignsignatureCreateObjectV1Request[] = $objEzsignsignatureCreateObjectV1Request;
+
+/**
+ * This is the object that will contain a objEzsignsignature to create
+ * @var \eZmaxAPI\Model\EzsignsignatureCreateObjectV1Request $objEzsignsignatureCreateObjectV1Request
+ */
+$objEzsignsignatureCreateObjectV1Request = new EzsignsignatureCreateObjectV1Request ();
+
+/**
+ * For this example, let's create an objEzsignsignature type of Acknowledgement
+ * @var \eZmaxAPI\Model\EzsignsignatureRequest $objEzsignsignatureRequest
+ */
+$objEzsignsignatureRequest = new EzsignsignatureRequest();
+
+// Sets which ezsign document will contain the new ezsign signature
+$objEzsignsignatureRequest->setFkiEzsigndocumentID(SAMPLE_fkiEzsigndocumentID);
+
+// Set who will have to sign the ezisgn signature. ID gotten from a previous request on createEzsignfoldersignerassociation
+$objEzsignsignatureRequest->setFkiEzsignfoldersignerassociationID(SAMPLE_fkiEzsignfoldersignerassociationID);
+
+// The page number in the ezsign document.
+$objEzsignsignatureRequest->setIEzsignpagePagenumber(1);
+
+// Sets the X coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureX(200);
+
+// Sets the Y coordinate of the ezsign signature
+$objEzsignsignatureRequest->setIEzsignsignatureY(150);
+
+// Sets in which step the ezsign signature will be signed. 
+$objEzsignsignatureRequest->setIEzsignsignatureStep(1);
+
+// Sets the type of ezsign signature. 
+$objEzsignsignatureRequest->setEEzsignsignatureType('Acknowledgement');
 
 // Sets the objEzsignsignature to the request object
 $objEzsignsignatureCreateObjectV1Request->setObjEzsignsignature($objEzsignsignatureRequest);
