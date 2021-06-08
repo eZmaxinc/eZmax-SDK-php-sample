@@ -12,7 +12,7 @@ date_default_timezone_set('America/Montreal');
 /*
  * Name of log file
  */
-define('FILENAME_LOG', './DocumentCreated.log');
+define('FILENAME_LOG', './DocumentCompleted.log');
 
 //Create or empty log file
 file_put_contents(FILENAME_LOG,"");
@@ -100,7 +100,7 @@ F_LOCAL_WriteToLog("ID of document : ".$objEzsigndocument->getPkiEzsigndocumentI
 F_LOCAL_WriteToLog("ID of folder : ".$objEzsigndocument->getFkiEzsignfolderID());
 F_LOCAL_WriteToLog("Document due date : ".$objEzsigndocument->getDtEzsigndocumentDuedate());
 F_LOCAL_WriteToLog("ID of language : ".$objEzsigndocument->getFkiLanguageID());
-F_LOCAL_WriteToLog("File name of document : ".$objEzsigndocument->getSEzsigndocumentFilename());
+F_LOCAL_WriteToLog("File name of document : ".$objEzsigndocument->getSEzsigndocumentName());
 F_LOCAL_WriteToLog("Document name : ".$objEzsigndocument->getSEzsigndocumentName());
 
 // If everything went well, send HTTP status code 204 so the calling server everything was successful and no more attempts should be made
