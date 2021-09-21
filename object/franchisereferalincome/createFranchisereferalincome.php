@@ -148,6 +148,16 @@ $objFranchisereferalincomeRequestCompound->setDtFranchisereferalincomeDisbursed(
 $objFranchisereferalincomeRequestCompound->setTFranchisereferalincomeComment('This is a comment');
 
 /**
+ * Sets the Franchiseoffice Id
+ */
+$objFranchisereferalincomeRequestCompound->setFkiFranchiseofficeID(343);
+
+/**
+ * Sets the Remote id
+ */
+$objFranchisereferalincomeRequestCompound->setSFranchisereferalincomeRemoteid('V2');
+
+/**
  * Let's create a contact list 
  */
 $a_objContactRequestCompound = [];
@@ -408,7 +418,6 @@ $objFranchisereferalincomeRequestCompound->setAObjContact($a_objContactRequestCo
 // Sets the objFranchisereferalincome to the request object
 $objFranchisereferalincomeCreateObjectV1Request->setObjFranchisereferalincomeCompound($objFranchisereferalincomeRequestCompound);
 
-
 //Finally push the request to the array of objects to save
 $a_objFranchisereferalincomeCreateObjectV1Request[] = $objFranchisereferalincomeCreateObjectV1Request;
 
@@ -432,6 +441,7 @@ try {
     foreach ($objFranchisereferalincomeCreateObjectV1Response->getMPayload()->getAPkiFranchisereferalincomeID() as $pkiFranchisereferalincomeID) {
         echo "Franchisereferalincome created with pkiFranchisereferalincomeID = $pkiFranchisereferalincomeID".PHP_EOL;
     }
+
 
     //Uncomment this line to ouput complete response
     //print_r($objFranchisereferalincomeCreateObjectV1Response);
