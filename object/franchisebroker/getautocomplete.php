@@ -23,26 +23,32 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active');
+	$a_objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active');
 	
 	//Output some attributes
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
+	foreach($a_objCommonGetAutocompleteV1Response->getMPayload() AS $objCommonGetAutocompleteV1ResponseMPayload) {
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getGroup().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getId().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getOption().PHP_EOL;
+	}
+
 	
 	
 	
 	// Let's get all active franchise broker with either sContactFirstname LIKE 'Jean%' or sContactLastname LIKE 'Jean%' or sFranchisebrokerLicense = 'Jean'
 	
 	/**
+	 * Give an array
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active', 'Jean');
+	$a_objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('Active', 'Jean');
 	
 	//Output some attributes
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
+	foreach($a_objCommonGetAutocompleteV1Response->getMPayload() AS $objCommonGetAutocompleteV1ResponseMPayload) {
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getGroup().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getId().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getOption().PHP_EOL;
+	}
 	
 	
 	// Let's get all active franchise broker
@@ -50,27 +56,29 @@ try {
 	/**
      * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
      */
-	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All');
+	$a_objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All');
 	
 	//Output some attributes
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
-	
-	
-		
+	foreach($a_objCommonGetAutocompleteV1Response->getMPayload() AS $objCommonGetAutocompleteV1ResponseMPayload) {
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getGroup().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getId().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getOption().PHP_EOL;
+	}
+			
 	
 	// Let's get all franchise broker with either sContactFirstname LIKE 'Jean%' or sContactLastname LIKE 'Jean%' or sFranchisebrokerLicense = 'Jean'
 	
 	/**
 	 * @var \eZmaxAPI\Model\CommonGetAutocompleteV1Response $objCommonGetAutocompleteV1Response
 	 */
-	$objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All', 'Jean');
+	$a_objCommonGetAutocompleteV1Response = $objObjectFranchisebrokerApi->franchisebrokerGetAutocompleteV1('All', 'Jean');
 	
 	//Output some attributes
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getGroup().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getId().PHP_EOL;
-	echo $objCommonGetAutocompleteV1Response->getMPayload()[0]->getOption().PHP_EOL;
+	foreach($a_objCommonGetAutocompleteV1Response->getMPayload() AS $objCommonGetAutocompleteV1ResponseMPayload) {
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getGroup().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getId().PHP_EOL;
+		echo $objCommonGetAutocompleteV1ResponseMPayload->getOption().PHP_EOL;
+	}
 }
 catch (Exception $e) {
     print_r($e);
