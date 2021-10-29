@@ -12,7 +12,7 @@ use eZmaxAPI\Model\EzsigndocumentGetWordsPositionsV1Request;
 
 /*
  * The pkiEzsigndocumentID to which we want to get words positions.
- * This value was returned after a successful Ezsignfolder creation.
+ * This value was returned after a successful Ezsigndocument creation.
  */
 define ('SAMPLE_pkiEzsigndocumentID', 43);
 
@@ -27,7 +27,7 @@ $objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(
 $a_objEzsigndocumentGetWordsPositionsV1Request = [];
 
 /**
- * This is the object that will contains either a EzsigndocumentGetWordsPositions.
+ * This is the object that will contains an EzsigndocumentGetWordsPositions.
  * @var \eZmaxAPI\Model\EzsigndocumentGetWordsPositionsV1Request $objEzsigndocumentGetWordsPositionsV1Request
  */
 $objEzsigndocumentGetWordsPositionsV1Request = new EzsigndocumentGetWordsPositionsV1Request();
@@ -62,7 +62,7 @@ try {
     foreach ($objEzsigndocumentGetWordsPositionsV1Response->getMPayload() as $objCustomWordPositionWordResponse) {
 
         echo "---------------------\n";
-        echo "Word: {$objCustomWordPositionWordResponse->getSWord()}\n";
+        echo "sWord: {$objCustomWordPositionWordResponse->getSWord()}\n";
         echo "---------------------\n";
 
         /**
@@ -70,14 +70,14 @@ try {
         * @var \eZmaxAPI\Model\WordPositionOccurence $objWordPositionOccurence
         */
         foreach($objCustomWordPositionWordResponse->getAObjWordPositionOccurence() as $objWordPositionOccurence){
-            echo "Page: {$objWordPositionOccurence->getIPage()}\n";
-            echo "X: {$objWordPositionOccurence->getIX()}\n";
-            echo "Y: {$objWordPositionOccurence->getIY()}\n";
+            echo "iPage: {$objWordPositionOccurence->getIPage()}\n";
+            echo "iX: {$objWordPositionOccurence->getIX()}\n";
+            echo "iY: {$objWordPositionOccurence->getIY()}\n";
             echo "\n";
         }
 
         if(count($objCustomWordPositionWordResponse->getAObjWordPositionOccurence()) == 0) {
-            echo "No Words found for '{$objCustomWordPositionWordResponse->getSWord()}' on the document\n";
+            echo "No occurence found for '{$objCustomWordPositionWordResponse->getSWord()}' on the document\n";
         }
     }
     echo "\n";
