@@ -27,7 +27,7 @@ $objObjectEzsigndocumentApi = new ObjectEzsigndocumentApi(new GuzzleHttp\Client(
 $a_objEzsigndocumentGetWordsPositionsV1Request = [];
 
 /**
- * This is the object that will contains either a EzsigndocumentGetWordsPositions.
+ * This is the object that will contains an EzsigndocumentGetWordsPositions.
  * @var \eZmaxAPI\Model\EzsigndocumentGetWordsPositionsV1Request $objEzsigndocumentGetWordsPositionsV1Request
  */
 $objEzsigndocumentGetWordsPositionsV1Request = new EzsigndocumentGetWordsPositionsV1Request();
