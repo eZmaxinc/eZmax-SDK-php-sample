@@ -54,6 +54,10 @@ $objEzsignfoldersignerassociationRequest->setFkiEzsignfolderID(SAMPLE_pkiEzsignf
 //This will link the Ezsignfoldersignerassociation to an existing User in the system. This user will be able to be used as a signatory in the document
 $objEzsignfoldersignerassociationRequest->setFkiUserID(SAMPLE_pkiUserID);
 
+// If this flag is true. The signatory will receive a copy of every signed Ezsigndocument even if it ain't required to sign the document.
+// Default is false
+$objEzsignfoldersignerassociationRequest->setBEzsignfoldersignerassociationReceivecopy(true);
+
 // Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
 $objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociation($objEzsignfoldersignerassociationRequest);
 
@@ -61,7 +65,6 @@ $objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersigner
 $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user in the office (End) **********************************/
-
 
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Email Validation (Begin) **********************************/
@@ -355,6 +358,11 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  
  //This will link the Ezsignfoldersignerassociation to an existing Ezsignfolder. This value was returned after a successful Ezsignfolder creation.
  $objEzsignfoldersignerassociationRequestCompound->setFkiEzsignfolderID(SAMPLE_pkiEzsignfolderID);
+
+// If this flag is true. The signatory will receive a copy of every signed Ezsigndocument even if it ain't required to sign the document.
+// Default is false
+$objEzsignfoldersignerassociationRequestCompound->setBEzsignfoldersignerassociationReceivecopy(true);
+
  
  /**
   * Let's create an EzsignsignerRequestCompound since we will be adding an object contact in our signer
