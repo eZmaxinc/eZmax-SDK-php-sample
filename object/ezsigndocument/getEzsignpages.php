@@ -22,7 +22,8 @@ $objObjectEzsigndocumentApi = new eZmaxAPI\Api\ObjectEzsigndocumentApi(new Guzzl
 try {
     
      /**
-     * Now that all the objects are ready in the array to save, let's send the request to the server 
+	 * We only need to pass the pkiEzsigndocumentID of the ezsign document we want to get.
+	 * We got it from a call to a previous ezsigndocumentCreateObject
      * @var \eZmaxAPI\Model\EzsigndocumentEzsignpagesV1Response $objEzsigndocumentEzsignpagesV1Response
      */
     $objEzsigndocumentEzsignpagesV1Response = $objObjectEzsigndocumentApi->ezsigndocumentGetEzsignpagesV1(SAMPLE_pkiEzsigndocumentID);
@@ -34,25 +35,25 @@ try {
     foreach($objEzsigndocumentEzsignpagesV1Response->getMPayload()->getAObjEzsignpage() AS $objEzsignpageResponse) {
 
         // Unique id from the database
-        echo "getPkiEzsignpageID: ".$objEzsignpageResponse->getPkiEzsignpageID()."\n";
+        echo "pkiEzsignpageID: ".$objEzsignpageResponse->getPkiEzsignpageID()."\n";
         
         // Width of the image in pixel
-        echo "getIEzsignpageWidthimage: ".$objEzsignpageResponse->getIEzsignpageWidthimage()."\n";
+        echo "iEzsignpageWidthimage: ".$objEzsignpageResponse->getIEzsignpageWidthimage()."\n";
         
         // Height of the image in pixel
-        echo "getIEzsignpageHeightimage: ".$objEzsignpageResponse->getIEzsignpageHeightimage()."\n";
+        echo "iEzsignpageHeightimage: ".$objEzsignpageResponse->getIEzsignpageHeightimage()."\n";
 
         // Width of the image in point PDF
-        echo "getIEzsignpageWidthpdf: ".$objEzsignpageResponse->getIEzsignpageWidthpdf()."\n";
+        echo "iEzsignpageWidthpdf: ".$objEzsignpageResponse->getIEzsignpageWidthpdf()."\n";
 
         // Height of the image in point PDF
-        echo "getIEzsignpageHeightpdf: ".$objEzsignpageResponse->getIEzsignpageHeightpdf()."\n";
+        echo "iEzsignpageHeightpdf: ".$objEzsignpageResponse->getIEzsignpageHeightpdf()."\n";
 
         // Page number
-        echo "getIEzsignpagePagenumber: ".$objEzsignpageResponse->getIEzsignpagePagenumber()."\n";
+        echo "iEzsignpagePagenumber: ".$objEzsignpageResponse->getIEzsignpagePagenumber()."\n";
 
         // URL of the image of the page
-        echo "getSImageUrl: ".$objEzsignpageResponse->getSImageUrl()."\n";
+        echo "sImageUrl: ".$objEzsignpageResponse->getSImageUrl()."\n";
         echo "\n";
     }
 } catch (Exception $e) {
