@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * This sample shows how to create one or more Franchisereferalincome.
@@ -8,28 +8,29 @@
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\Api\ObjectFranchisereferalincomeApi;
+use eZmaxAPI\Model\AddressRequest;
+use eZmaxAPI\Model\ContactinformationsRequestCompound;
+use eZmaxAPI\Model\ContactRequestCompound;
+use eZmaxAPI\Model\EmailRequest;
 use eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request;
 use eZmaxAPI\Model\FranchisereferalincomeRequestCompound;
-use eZmaxAPI\Model\ContactRequestCompound;
-use eZmaxAPI\Model\ContactinformationsRequestCompound;
-use eZmaxAPI\Model\AddressRequest;
-use eZmaxAPI\Model\EmailRequest;
 use eZmaxAPI\Model\PhoneRequest;
 use eZmaxAPI\Model\WebsiteRequest;
 
-require_once (__DIR__ . '/../../connector.php');
+require_once __DIR__ . '/../../connector.php';
 
-define ('SAMPLE_fkiAddresstypeID', 1); // Office
-define ('SAMPLE_fkiProvinceID', 11); // Quebec
-define ('SAMPLE_fkiCountryID', 1); // Canada 
-define ('SAMPLE_fkiFranchisebrokerID', 1);
-define ('SAMPLE_fkiFranchisereferalincomeprogramID', 1);
-define ('SAMPLE_fkiPeriodID', 420);
-define ('SAMPLE_fkiContacttitleID', 2); // Mr.
-define ('SAMPLE_fkiLanguageID', 2); // English
-define ('SAMPLE_fkiPhonetypeID', 1); // Office
-define ('SAMPLE_fkiEmailtypeID', 1); // Office
-define ('SAMPLE_fkiWebsitetypeID', 1); // Website
+define('SAMPLE_fkiAddresstypeID', 1); // Office
+define('SAMPLE_fkiProvinceID', 11); // Quebec
+define('SAMPLE_fkiCountryID', 1); // Canada
+define('SAMPLE_fkiFranchisebrokerID', 1);
+define('SAMPLE_fkiFranchisereferalincomeprogramID', 1);
+define('SAMPLE_fkiPeriodID', 420);
+define('SAMPLE_fkiContacttitleID', 2); // Mr.
+define('SAMPLE_fkiLanguageID', 2); // English
+define('SAMPLE_fkiPhonetypeID', 1); // Office
+define('SAMPLE_fkiEmailtypeID', 1); // Office
+define('SAMPLE_fkiWebsitetypeID', 1); // Website
+define('SAMPLE_fkiFranchiseofficeID', 343); // Id of the Franchise Office
 
 /**
  * @var \eZmaxAPI\Api\ObjectFranchisereferalincomeApi $objObjectFranchisereferalincomeApi
@@ -42,8 +43,8 @@ $a_objFranchisereferalincomeCreateObjectV1Request = [];
 /**
  * This is the object that will contains a objFranchisereferalincomeCreateObjectV1Request to create
  * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request $objFranchisereferalincomeCreateObjectV1Request
-*/
-$objFranchisereferalincomeCreateObjectV1Request = new FranchisereferalincomeCreateObjectV1Request ();
+ */
+$objFranchisereferalincomeCreateObjectV1Request = new FranchisereferalincomeCreateObjectV1Request();
 
 /**
  * For this example, let's create an objFranchisereferalincome
@@ -148,7 +149,17 @@ $objFranchisereferalincomeRequestCompound->setDtFranchisereferalincomeDisbursed(
 $objFranchisereferalincomeRequestCompound->setTFranchisereferalincomeComment('This is a comment');
 
 /**
- * Let's create a contact list 
+ * Sets the Franchiseoffice Id
+ */
+$objFranchisereferalincomeRequestCompound->setFkiFranchiseofficeID(SAMPLE_fkiFranchiseofficeID);
+
+/**
+ * Sets the Remote id
+ */
+$objFranchisereferalincomeRequestCompound->setSFranchisereferalincomeRemoteid('V2');
+
+/**
+ * Let's create a contact list
  */
 $a_objContactRequestCompound = [];
 
@@ -327,7 +338,7 @@ $objPhoneRequestContact->setSPhoneExtension('123');
 $a_objPhoneRequestContact[] = $objPhoneRequestContact;
 
 /**
- * Creates a website list 
+ * Creates a website list
  */
 $a_objWebsiteRequest = [];
 /**
@@ -408,7 +419,6 @@ $objFranchisereferalincomeRequestCompound->setAObjContact($a_objContactRequestCo
 // Sets the objFranchisereferalincome to the request object
 $objFranchisereferalincomeCreateObjectV1Request->setObjFranchisereferalincomeCompound($objFranchisereferalincomeRequestCompound);
 
-
 //Finally push the request to the array of objects to save
 $a_objFranchisereferalincomeCreateObjectV1Request[] = $objFranchisereferalincomeCreateObjectV1Request;
 
@@ -424,21 +434,18 @@ try {
      * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Response $objFranchisereferalincomeCreateObjectV1Response
      */
     $objFranchisereferalincomeCreateObjectV1Response = $objObjectFranchisereferalincomeApi->franchisereferalincomeCreateObjectV1($a_objFranchisereferalincomeCreateObjectV1Request);
-    
+
     /*
      * The server will return the unique pkiFranchisereferalincomeID of each created franchise referal income in the same order they were in the $a_objFranchisereferalincomeCreateObjectV1Request array.
      * You can keep these values for future requests to check the status or other needs
-    */
+     */
     foreach ($objFranchisereferalincomeCreateObjectV1Response->getMPayload()->getAPkiFranchisereferalincomeID() as $pkiFranchisereferalincomeID) {
-        echo "Franchisereferalincome created with pkiFranchisereferalincomeID = $pkiFranchisereferalincomeID".PHP_EOL;
+        echo "Franchisereferalincome created with pkiFranchisereferalincomeID = $pkiFranchisereferalincomeID" . PHP_EOL;
     }
 
     //Uncomment this line to ouput complete response
     //print_r($objFranchisereferalincomeCreateObjectV1Response);
 
-}
-catch (Exception $e) {
+} catch (Exception $e) {
     print_r($e);
 }
-
-?>
