@@ -8,8 +8,8 @@
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\Api\ObjectEzsignfolderApi;
-use eZmaxAPI\Model\EzsignfolderCreateObjectV1Request;
-use eZmaxAPI\Model\EzsignfolderRequest;
+use eZmaxAPI\Model\EzsignfolderCreateObjectV2Request;
+use eZmaxAPI\Model\EzsignfolderRequestCompound;
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -19,43 +19,44 @@ require_once (__DIR__ . '/../../connector.php');
 $objObjectEzsignfolderApi = new ObjectEzsignfolderApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contains all the objects we want to create.
-$a_objEzsignfolderCreateObjectV1Request = [];
+$a_objEzsignfolderRequestCompound = [];
 
 /********************************** EXAMPLE Ezsignfolder Only (Begin) **********************************/
 
 /**
- * This is the object that will contains either a objEzsignfolder or a objEzsignfolderCompound
- * depending on the type of object you want to create.
- * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Request $objEzsignfolderCreateObjectV1Request
+ * This is the object that will contains an array of objEzsignfolderCompound you want to create.
+ * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV2Request $objEzsignfolderCreateObjectV2Request
  */
-$objEzsignfolderCreateObjectV1Request = new EzsignfolderCreateObjectV1Request ();
+$objEzsignfolderCreateObjectV2Request = new EzsignfolderCreateObjectV2Request ();
 
 /**
  * For this example, let's create an objEzsignfolder 
- * @var \eZmaxAPI\Model\EzsignfolderRequest $objEzsignfolderRequest
+ * @var \eZmaxAPI\Model\EzsignfolderRequestCompound $objEzsignfolderRequestCompound
  */
-$objEzsignfolderRequest = new EzsignfolderRequest();
+$objEzsignfolderRequestCompound = new EzsignfolderRequestCompound();
 
 //This will determine in wich type of folder the folder will be. 
-$objEzsignfolderRequest->setFkiEzsignfoldertypeID(1);
+$objEzsignfolderRequestCompound->setFkiEzsignfoldertypeID(1);
 
 //Set if you need TSA or not. Please refer to API Documentation
-$objEzsignfolderRequest->setFkiEzsigntsarequirementID(1);
+$objEzsignfolderRequestCompound->setFkiEzsigntsarequirementID(1);
 
 //Set the reminder frequency for Ezsign signers that haven't signed the document
-$objEzsignfolderRequest->setEEzsignfolderSendreminderfrequency('Daily');
+$objEzsignfolderRequestCompound->setEEzsignfolderSendreminderfrequency('Daily');
 
 //Set the "name" of the folder for easy reference
-$objEzsignfolderRequest->setSEzsignfolderDescription('Test eZsign Folder');
+$objEzsignfolderRequestCompound->setSEzsignfolderDescription('Test eZsign Folder');
 
 //Add extra notes to the folder (facultative)
-$objEzsignfolderRequest->setTEzsignfolderNote('An extra notes we can add to the ezsign folder');
-
-// Since we created a objEzsignfolder, set the proper value in the EzsignfolderCreateObjectV1Request object
-$objEzsignfolderCreateObjectV1Request->setObjEzsignfolder($objEzsignfolderRequest);
+$objEzsignfolderRequestCompound->setTEzsignfolderNote('An extra notes we can add to the ezsign folder');
 
 //Finally push the request to the array of objects to save
-$a_objEzsignfolderCreateObjectV1Request [] = $objEzsignfolderCreateObjectV1Request;
+$a_objEzsignfolderRequestCompound [] = $objEzsignfolderRequestCompound;
+
+// Set the array containing all objEzsignfolderRequestCompound in the EzsignfolderCreateObjectV2Request object
+$objEzsignfolderCreateObjectV2Request->setAObjEzsignfolder($a_objEzsignfolderRequestCompound);
+
+
 
 /********************************** EXAMPLE Ezsignfolder Only (End) **********************************/
 
@@ -64,24 +65,24 @@ try {
     /*
      * Uncomment this line if you want to see the actual request's body that will be sent to the server
      */
-   //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objEzsignfolderCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
+   //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($objEzsignfolderCreateObjectV2Request), JSON_PRETTY_PRINT).PHP_EOL;
     
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV1Response $objEzsignfolderCreateObjectV1Response
+     * @var \eZmaxAPI\Model\EzsignfolderCreateObjectV2Response $objEzsignfolderCreateObjectV2Response
      */
-    $objEzsignfolderCreateObjectV1Response = $objObjectEzsignfolderApi->ezsignfolderCreateObjectV1($a_objEzsignfolderCreateObjectV1Request);
+    $objEzsignfolderCreateObjectV2Response = $objObjectEzsignfolderApi->ezsignfolderCreateObjectV2($objEzsignfolderCreateObjectV2Request);
     
     /*
-     * The server will return the unique pkiEzsignfolderID of each created Ezsignfolder in the same order they were in the $a_objEzsignfolderCreateObjectV1Request array.
+     * The server will return the unique pkiEzsignfolderID of each created Ezsignfolder in the same order they were in the $a_objEzsignfolderRequestCompound array.
      * You can keep these values for future requests to check the status or other needs
      */
-    foreach ($objEzsignfolderCreateObjectV1Response->getMPayload()->getAPkiEzsignfolderID() as $pkiEzsignfolderID) {
+    foreach ($objEzsignfolderCreateObjectV2Response->getMPayload()->getAPkiEzsignfolderID() as $pkiEzsignfolderID) {
         echo "Ezsignfolder created with pkiEzsignfolderID = $pkiEzsignfolderID".PHP_EOL;
     }
     
     //Uncomment this line to ouput complete response
-    //print_r($objEzsignfolderCreateObjectV1Response);
+    //print_r($objEzsignfolderCreateObjectV2Response);
     
 }
 catch (Exception $e) {

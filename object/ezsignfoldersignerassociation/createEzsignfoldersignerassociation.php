@@ -9,8 +9,7 @@
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
 use eZmaxAPI\Api\ObjectEzsignfoldersignerassociationApi;
-use eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request;
-use eZmaxAPI\Model\EzsignfoldersignerassociationRequest;
+use eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV2Request;
 use eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound;
 use eZmaxAPI\Model\EzsignsignerRequestCompound;
 use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
@@ -20,8 +19,8 @@ use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
  * This value was returned after a successful Ezsignfolder creation.
  */
 
-define ('SAMPLE_pkiEzsignfolderID', 8);
-define ('SAMPLE_pkiUserID', 5);
+define ('SAMPLE_pkiEzsignfolderID', 1034);
+define ('SAMPLE_pkiUserID', 3);
 
 require_once (__DIR__ . '/../../connector.php');
 
@@ -31,50 +30,39 @@ require_once (__DIR__ . '/../../connector.php');
 $objObjectEzsignfoldersignerassociationApi = new ObjectEzsignfoldersignerassociationApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contains all the objects we want to create.
-$a_objEzsignfoldersignerassociationCreateObjectV1Request = [];
+$a_objEzsignfoldersignerassociationRequestCompound = [];
+
+/**
+ * This is the object that will contains an array of objEzsignfoldersignerassociationCompound you want to create.
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV2Request $objEzsignfoldersignerassociationCreateObjectV2Request
+ */
+$objEzsignfoldersignerassociationCreateObjectV2Request = new EzsignfoldersignerassociationCreateObjectV2Request ();
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user in the office (Begin) **********************************/
 
 /**
- * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
- * depending on the type of object you want to create.
- * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
- */
-$objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
-
-/**
  * For this example, let's create an objEzsignfoldersignerassociation 
- * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequest $objEzsignfoldersignerassociationRequest
+ * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
  */
-$objEzsignfoldersignerassociationRequest = new EzsignfoldersignerassociationRequest();
+$objEzsignfoldersignerassociationRequestCompound = new EzsignfoldersignerassociationRequestCompound();
 
 //This will link the Ezsignfoldersignerassociation to an existing Ezsignfolder. This value was returned after a successful Ezsignfolder creation.
-$objEzsignfoldersignerassociationRequest->setFkiEzsignfolderID(SAMPLE_pkiEzsignfolderID);
+$objEzsignfoldersignerassociationRequestCompound->setFkiEzsignfolderID(SAMPLE_pkiEzsignfolderID);
 
 //This will link the Ezsignfoldersignerassociation to an existing User in the system. This user will be able to be used as a signatory in the document
-$objEzsignfoldersignerassociationRequest->setFkiUserID(SAMPLE_pkiUserID);
+$objEzsignfoldersignerassociationRequestCompound->setFkiUserID(SAMPLE_pkiUserID);
 
 // If this flag is true. The signatory will receive a copy of every signed Ezsigndocument even if it ain't required to sign the document.
 // Default is false
-$objEzsignfoldersignerassociationRequest->setBEzsignfoldersignerassociationReceivecopy(true);
-
-// Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
-$objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociation($objEzsignfoldersignerassociationRequest);
+$objEzsignfoldersignerassociationRequestCompound->setBEzsignfoldersignerassociationReceivecopy(true);
 
 //Finally push the request to the array of objects to save
-$a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+$a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user in the office (End) **********************************/
 
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Email Validation (Begin) **********************************/
-
-/**
- * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
- * depending on the type of object you want to create.
- * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
- */
-$objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
@@ -122,23 +110,13 @@ $objEzsignsignerRequestCompound->setObjContact($objEzsignsignerRequestCompoundCo
 // Let's set the objEzsignsigner we want to add to the folder
 $objEzsignfoldersignerassociationRequestCompound->setObjEzsignsigner($objEzsignsignerRequestCompound);
 
-// Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
-$objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociationCompound($objEzsignfoldersignerassociationRequestCompound);
-
 //Finally push the request to the array of objects to save
-$a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+$a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Email Validation (End) **********************************/
 
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone + Email Validation (Begin) **********************************/
-
-/**
- * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
- * depending on the type of object you want to create.
- * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
- */
-$objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
@@ -192,23 +170,13 @@ $objEzsignsignerRequestCompound->setObjContact($objEzsignsignerRequestCompoundCo
 // Let's set the objEzsignsigner we want to add to the folder
 $objEzsignfoldersignerassociationRequestCompound->setObjEzsignsigner($objEzsignsignerRequestCompound);
 
-// Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
-$objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociationCompound($objEzsignfoldersignerassociationRequestCompound);
-
 //Finally push the request to the array of objects to save
-$a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+$a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone + Email Validation (End) **********************************/
 
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Secret question Validation (Begin) **********************************/
-
-/**
- * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
- * depending on the type of object you want to create.
- * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
- */
- $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
 
 /**
  * For this example, let's create an objEzsignfoldersignerassociationCompound
@@ -262,25 +230,15 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  // Let's set the objEzsignsigner we want to add to the folder
  $objEzsignfoldersignerassociationRequestCompound->setObjEzsignsigner($objEzsignsignerRequestCompound);
 
- // Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
- $objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociationCompound($objEzsignfoldersignerassociationRequestCompound);
-
  //Finally push the request to the array of objects to save
- $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+ $a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
 
 /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with Secret question Validation (End) **********************************/
 
 
 
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone (Begin) **********************************/
- 
- /**
-  * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
-  * depending on the type of object you want to create.
-  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
-  */
- $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
- 
+  
  /**
   * For this example, let's create an objEzsignfoldersignerassociationCompound
   * @var \eZmaxAPI\Model\EzsignfoldersignerassociationRequestCompound $objEzsignfoldersignerassociationRequestCompound
@@ -331,24 +289,14 @@ $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersi
  // Let's set the objEzsignsigner we want to add to the folder
  $objEzsignfoldersignerassociationRequestCompound->setObjEzsignsigner($objEzsignsignerRequestCompound);
  
- // Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
- $objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociationCompound($objEzsignfoldersignerassociationRequestCompound);
- 
  //Finally push the request to the array of objects to save
- $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+ $a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
  
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office with SMS/Phone + Email Validation (End) **********************************/
  
  
  
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office without SMS/Phone (Begin) **********************************/
- 
- /**
-  * This is the object that will contains either a objEzsignfoldersignerassociation or a objEzsignfoldersignerassociationCompound
-  * depending on the type of object you want to create.
-  * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Request $objEzsignfoldersignerassociationCreateObjectV1Request
-  */
- $objEzsignfoldersignerassociationCreateObjectV1Request = new EzsignfoldersignerassociationCreateObjectV1Request ();
  
  /**
   * For this example, let's create an objEzsignfoldersignerassociationCompound
@@ -398,15 +346,13 @@ $objEzsignfoldersignerassociationRequestCompound->setBEzsignfoldersignerassociat
  // Let's set the objEzsignsigner we want to add to the folder
  $objEzsignfoldersignerassociationRequestCompound->setObjEzsignsigner($objEzsignsignerRequestCompound);
  
- // Since we created a objEzsignfoldersignerassociation, set the proper value in the EzsignfoldersignerassociationCreateObjectV1Request object
- $objEzsignfoldersignerassociationCreateObjectV1Request->setObjEzsignfoldersignerassociationCompound($objEzsignfoldersignerassociationRequestCompound);
- 
  //Finally push the request to the array of objects to save
- $a_objEzsignfoldersignerassociationCreateObjectV1Request [] = $objEzsignfoldersignerassociationCreateObjectV1Request;
+ $a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersignerassociationRequestCompound;
  
  /********************************** EXAMPLE Ezsignfoldersignerassociation for a user outside of the office without SMS/Phone + Email Validation (End) **********************************/
 
-
+ // Set the array containing all objEzsignfoldersignerassociationCompound in the objEzsignfoldersignerassociationCreateObjectV2Request object
+ $objEzsignfoldersignerassociationCreateObjectV2Request->setAObjEzsignfoldersignerassociation($a_objEzsignfoldersignerassociationRequestCompound);
 
 
 try {
@@ -414,24 +360,24 @@ try {
     /*
      * Uncomment this line if you want to see the actual request's body that will be sent to the server
      */
-    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objEzsignfoldersignerassociationCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
+    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($objEzsignfoldersignerassociationCreateObjectV2Request), JSON_PRETTY_PRINT).PHP_EOL;
 
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server 
-     * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV1Response $objEzsignfoldersignerassociationCreateObjectV1Response
+     * @var \eZmaxAPI\Model\EzsignfoldersignerassociationCreateObjectV2Response $objEzsignfoldersignerassociationCreateObjectV2Response
      */
-    $objEzsignfoldersignerassociationCreateObjectV1Response = $objObjectEzsignfoldersignerassociationApi->EzsignfoldersignerassociationCreateObjectV1($a_objEzsignfoldersignerassociationCreateObjectV1Request);
+    $objEzsignfoldersignerassociationCreateObjectV2Response = $objObjectEzsignfoldersignerassociationApi->EzsignfoldersignerassociationCreateObjectV2($objEzsignfoldersignerassociationCreateObjectV2Request);
     
     /*
-     * The server will return the unique pkiEzsignfoldersignerassociationID of each created Ezsignfoldersignerassociation in the same order they were in the $a_objEzsignfoldersignerassociationCreateObjectV1Request array.
+     * The server will return the unique pkiEzsignfoldersignerassociationID of each created Ezsignfoldersignerassociation in the same order they were in the $a_objEzsignfoldersignerassociationRequestCompound array.
      * You can keep these values for future requests to check the status or other needs
      */
-    foreach ($objEzsignfoldersignerassociationCreateObjectV1Response->getMPayload()->getAPkiEzsignfoldersignerassociationID() as $pkiEzsignfoldersignerassociationID) {
+    foreach ($objEzsignfoldersignerassociationCreateObjectV2Response->getMPayload()->getAPkiEzsignfoldersignerassociationID() as $pkiEzsignfoldersignerassociationID) {
         echo "Ezsignfoldersignerassociation created with pkiEzsignfoldersignerassociationID = $pkiEzsignfoldersignerassociationID".PHP_EOL;
     }
     
     //Uncomment this line to ouput complete response
-    //print_r($objEzsignfoldersignerassociationCreateObjectV1Response);
+    //print_r($objEzsignfoldersignerassociationCreateObjectV2Response);
     
 }
 catch (Exception $e) {
