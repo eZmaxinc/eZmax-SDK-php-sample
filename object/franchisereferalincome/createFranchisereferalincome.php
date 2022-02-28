@@ -12,7 +12,7 @@ use eZmaxAPI\Model\AddressRequest;
 use eZmaxAPI\Model\ContactinformationsRequestCompound;
 use eZmaxAPI\Model\ContactRequestCompound;
 use eZmaxAPI\Model\EmailRequest;
-use eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request;
+use eZmaxAPI\Model\FranchisereferalincomeCreateObjectV2Request;
 use eZmaxAPI\Model\FranchisereferalincomeRequestCompound;
 use eZmaxAPI\Model\PhoneRequest;
 use eZmaxAPI\Model\WebsiteRequest;
@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../connector.php';
 define('SAMPLE_fkiAddresstypeID', 1); // Office
 define('SAMPLE_fkiProvinceID', 11); // Quebec
 define('SAMPLE_fkiCountryID', 1); // Canada
-define('SAMPLE_fkiFranchisebrokerID', 1);
+define('SAMPLE_fkiFranchisebrokerID', 11462);
 define('SAMPLE_fkiFranchisereferalincomeprogramID', 1);
 define('SAMPLE_fkiPeriodID', 420);
 define('SAMPLE_fkiContacttitleID', 2); // Mr.
@@ -30,7 +30,7 @@ define('SAMPLE_fkiLanguageID', 2); // English
 define('SAMPLE_fkiPhonetypeID', 1); // Office
 define('SAMPLE_fkiEmailtypeID', 1); // Office
 define('SAMPLE_fkiWebsitetypeID', 1); // Website
-define('SAMPLE_fkiFranchiseofficeID', 343); // Id of the Franchise Office
+define('SAMPLE_fkiFranchiseofficeID', 305); // Id of the Franchise Office
 
 /**
  * @var \eZmaxAPI\Api\ObjectFranchisereferalincomeApi $objObjectFranchisereferalincomeApi
@@ -38,13 +38,13 @@ define('SAMPLE_fkiFranchiseofficeID', 343); // Id of the Franchise Office
 $objObjectFranchisereferalincomeApi = new ObjectFranchisereferalincomeApi(new GuzzleHttp\Client(), $objConfiguration);
 
 //This array will contains all the objects we want to create.
-$a_objFranchisereferalincomeCreateObjectV1Request = [];
+$a_objFranchisereferalincomeRequestCompound = [];
 
 /**
- * This is the object that will contains a objFranchisereferalincomeCreateObjectV1Request to create
- * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Request $objFranchisereferalincomeCreateObjectV1Request
+ * This is the object that will contains an array of objFranchisereferalincomeCompound you want to create.
+ * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV2Request $objFranchisereferalincomeCreateObjectV2Request
  */
-$objFranchisereferalincomeCreateObjectV1Request = new FranchisereferalincomeCreateObjectV1Request();
+$objFranchisereferalincomeCreateObjectV2Request = new FranchisereferalincomeCreateObjectV2Request();
 
 /**
  * For this example, let's create an objFranchisereferalincome
@@ -121,7 +121,7 @@ $objFranchisereferalincomeRequestCompound->setFkiPeriodID(SAMPLE_fkiPeriodID);
 /**
  * Sets the loan amount
  */
-$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeLoan(500275.62);
+$objFranchisereferalincomeRequestCompound->setDFranchisereferalincomeLoan(500276.62);
 
 /**
  * Sets the franchise amount
@@ -156,7 +156,7 @@ $objFranchisereferalincomeRequestCompound->setFkiFranchiseofficeID(SAMPLE_fkiFra
 /**
  * Sets the Remote id
  */
-$objFranchisereferalincomeRequestCompound->setSFranchisereferalincomeRemoteid('V2');
+$objFranchisereferalincomeRequestCompound->setSFranchisereferalincomeRemoteid('V3');
 
 /**
  * Let's create a contact list
@@ -416,35 +416,37 @@ $a_objContactRequestCompound[] = $objContactRequestCompound;
  */
 $objFranchisereferalincomeRequestCompound->setAObjContact($a_objContactRequestCompound);
 
-// Sets the objFranchisereferalincome to the request object
-$objFranchisereferalincomeCreateObjectV1Request->setObjFranchisereferalincomeCompound($objFranchisereferalincomeRequestCompound);
-
 //Finally push the request to the array of objects to save
-$a_objFranchisereferalincomeCreateObjectV1Request[] = $objFranchisereferalincomeCreateObjectV1Request;
+$a_objFranchisereferalincomeRequestCompound[] = $objFranchisereferalincomeRequestCompound;
+
+// Sets the objFranchisereferalincome to the request object
+$objFranchisereferalincomeCreateObjectV2Request->setAObjFranchisereferalincome($a_objFranchisereferalincomeRequestCompound);
+
+
 
 try {
 
     /*
      * Uncomment this line if you want to see the actual request's body that will be sent to the server
      */
-    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($a_objFranchisereferalincomeCreateObjectV1Request), JSON_PRETTY_PRINT).PHP_EOL;
+    //echo json_encode(eZmaxAPI\ObjectSerializer::sanitizeForSerialization ($objFranchisereferalincomeCreateObjectV2Request), JSON_PRETTY_PRINT).PHP_EOL;
 
     /**
      * Now that all the objects are ready in the array to save, let's send the request to the server
-     * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV1Response $objFranchisereferalincomeCreateObjectV1Response
+     * @var \eZmaxAPI\Model\FranchisereferalincomeCreateObjectV2Response $objFranchisereferalincomeCreateObjectV2Response
      */
-    $objFranchisereferalincomeCreateObjectV1Response = $objObjectFranchisereferalincomeApi->franchisereferalincomeCreateObjectV1($a_objFranchisereferalincomeCreateObjectV1Request);
+    $objFranchisereferalincomeCreateObjectV2Response = $objObjectFranchisereferalincomeApi->franchisereferalincomeCreateObjectV2($objFranchisereferalincomeCreateObjectV2Request);
 
     /*
-     * The server will return the unique pkiFranchisereferalincomeID of each created franchise referal income in the same order they were in the $a_objFranchisereferalincomeCreateObjectV1Request array.
+     * The server will return the unique pkiFranchisereferalincomeID of each created franchise referal income in the same order they were in the $a_objFranchisereferalincomeRequestCompound array.
      * You can keep these values for future requests to check the status or other needs
      */
-    foreach ($objFranchisereferalincomeCreateObjectV1Response->getMPayload()->getAPkiFranchisereferalincomeID() as $pkiFranchisereferalincomeID) {
+    foreach ($objFranchisereferalincomeCreateObjectV2Response->getMPayload()->getAPkiFranchisereferalincomeID() as $pkiFranchisereferalincomeID) {
         echo "Franchisereferalincome created with pkiFranchisereferalincomeID = $pkiFranchisereferalincomeID" . PHP_EOL;
     }
 
     //Uncomment this line to ouput complete response
-    //print_r($objFranchisereferalincomeCreateObjectV1Response);
+    //print_r($objFranchisereferalincomeCreateObjectV2Response);
 
 } catch (Exception $e) {
     print_r($e);
