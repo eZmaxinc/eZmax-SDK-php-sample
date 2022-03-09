@@ -3,8 +3,6 @@
 //Load composers packages
 require_once (__DIR__ . '/vendor/autoload.php');
 
-//Test
-
 /**
  * Using a global variable is not the best design, you will probably want to wrap this in a class.
  * To have the sample simple to follow, and to reduce duplication of code, we chose to use a global variable
