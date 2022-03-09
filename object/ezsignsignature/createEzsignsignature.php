@@ -3,7 +3,7 @@
 /**
  * This sample shows how to create one or more Ezsignsignature.
  * In this example, we will create a single Ezsignsignature but you can create more than one by adding more objects to the array.
- * 
+ *
  */
 
 //Specifying namespaces we are using below to make the creation of objects easier to read.
@@ -11,10 +11,10 @@ use eZmaxAPI\Api\ObjectEzsignsignatureApi;
 use eZmaxAPI\Model\EzsignsignatureCreateObjectV2Request;
 use eZmaxAPI\Model\EzsignsignatureRequestCompound;
 
-require_once (__DIR__ . '/../../connector.php');
+require_once __DIR__ . '/../../connector.php';
 
-define ('SAMPLE_fkiEzsigndocumentID', 3719);
-define ('SAMPLE_fkiEzsignfoldersignerassociationID', 1723);
+define('SAMPLE_fkiEzsigndocumentID', 3736);
+define('SAMPLE_fkiEzsignfoldersignerassociationID', 1733);
 
 /**
  * @var \eZmaxAPI\Api\ObjectEzsignsignatureApi $objObjectEzsignsignatureApi
@@ -28,7 +28,7 @@ $a_objEzsignsignatureRequestCompound = [];
  * This is the object that will contains an array of objEzsignsignatureCompound you want to create.
  * @var \eZmaxAPI\Model\EzsignsignatureCreateObjectV2Request $objEzsignsignatureCreateObjectV2Request
  */
-$objEzsignsignatureCreateObjectV2Request = new EzsignsignatureCreateObjectV2Request ();
+$objEzsignsignatureCreateObjectV2Request = new EzsignsignatureCreateObjectV2Request();
 
 /**
  * For this example, let's create an objEzsignsignature type of Name
@@ -51,16 +51,23 @@ $objEzsignsignatureRequestCompound->setIEzsignsignatureX(200);
 // Sets the Y coordinate of the ezsign signature
 $objEzsignsignatureRequestCompound->setIEzsignsignatureY(300);
 
-// Sets in which step the ezsign signature will be signed. 
+// Sets in which step the ezsign signature will be signed.
 $objEzsignsignatureRequestCompound->setIEzsignsignatureStep(1);
 
-// Sets the type of ezsign signature. 
+// Sets the type of ezsign signature.
 $objEzsignsignatureRequestCompound->setEEzsignsignatureType('Name');
+
+// Sets the tooltip message
+$objEzsignsignatureRequestCompound->setTEzsignsignatureTooltip('Please sign here if you agree to the terms');
+
+// Sets the display location of the tooltip
+$objEzsignsignatureRequestCompound->setEEzsignsignatureTooltipposition('TopLeft');
+
+// Sets the font for the signature
+$objEzsignsignatureRequestCompound->setEEzsignsignatureFont('Normal');
 
 //Finally push the request to the array of objects to save
 $a_objEzsignsignatureRequestCompound[] = $objEzsignsignatureRequestCompound;
-
-
 
 /**
  * For this example, let's create an objEzsignsignature type of City
@@ -83,16 +90,20 @@ $objEzsignsignatureRequestCompound->setIEzsignsignatureX(200);
 // Sets the Y coordinate of the ezsign signature
 $objEzsignsignatureRequestCompound->setIEzsignsignatureY(250);
 
-// Sets in which step the ezsign signature will be signed. 
+// Sets in which step the ezsign signature will be signed.
 $objEzsignsignatureRequestCompound->setIEzsignsignatureStep(1);
 
-// Sets the type of ezsign signature. 
+// Sets the type of ezsign signature.
 $objEzsignsignatureRequestCompound->setEEzsignsignatureType('City');
+
+// Sets the tooltip message
+$objEzsignsignatureRequestCompound->setTEzsignsignatureTooltip('Please sign here if you agree to the terms');
+
+// Sets the display location of the tooltip
+$objEzsignsignatureRequestCompound->setEEzsignsignatureTooltipposition('TopLeft');
 
 //Finally push the request to the array of objects to save
 $a_objEzsignsignatureRequestCompound[] = $objEzsignsignatureRequestCompound;
-
-
 
 /**
  * For this example, let's create an objEzsignsignature type of Initials
@@ -115,16 +126,23 @@ $objEzsignsignatureRequestCompound->setIEzsignsignatureX(200);
 // Sets the Y coordinate of the ezsign signature
 $objEzsignsignatureRequestCompound->setIEzsignsignatureY(200);
 
-// Sets in which step the ezsign signature will be signed. 
+// Sets in which step the ezsign signature will be signed.
 $objEzsignsignatureRequestCompound->setIEzsignsignatureStep(1);
 
-// Sets the type of ezsign signature. 
+// Sets the type of ezsign signature.
 $objEzsignsignatureRequestCompound->setEEzsignsignatureType('Initials');
+
+// Sets the tooltip message
+$objEzsignsignatureRequestCompound->setTEzsignsignatureTooltip('Please sign here if you agree to the terms');
+
+// Sets the display location of the tooltip
+$objEzsignsignatureRequestCompound->setEEzsignsignatureTooltipposition('TopLeft');
+
+// Sets the font for the signature
+$objEzsignsignatureRequestCompound->setEEzsignsignatureFont('Normal');
 
 //Finally push the request to the array of objects to save
 $a_objEzsignsignatureRequestCompound[] = $objEzsignsignatureRequestCompound;
-
-
 
 /**
  * For this example, let's create an objEzsignsignature type of Acknowledgement
@@ -147,16 +165,20 @@ $objEzsignsignatureRequestCompound->setIEzsignsignatureX(200);
 // Sets the Y coordinate of the ezsign signature
 $objEzsignsignatureRequestCompound->setIEzsignsignatureY(150);
 
-// Sets in which step the ezsign signature will be signed. 
+// Sets in which step the ezsign signature will be signed.
 $objEzsignsignatureRequestCompound->setIEzsignsignatureStep(1);
 
-// Sets the type of ezsign signature. 
+// Sets the type of ezsign signature.
 $objEzsignsignatureRequestCompound->setEEzsignsignatureType('Acknowledgement');
+
+// Sets the tooltip message
+$objEzsignsignatureRequestCompound->setTEzsignsignatureTooltip('Please sign here if you agree to the terms');
+
+// Sets the display location of the tooltip
+$objEzsignsignatureRequestCompound->setEEzsignsignatureTooltipposition('TopLeft');
 
 //Finally push the request to the array of objects to save
 $a_objEzsignsignatureRequestCompound[] = $objEzsignsignatureRequestCompound;
-
-
 
 // Set the array containing all objEzsignfolderRequestCompound in the EzsignsignatureCreateObjectV2Request object
 $objEzsignsignatureCreateObjectV2Request->setAObjEzsignsignature($a_objEzsignsignatureRequestCompound);
@@ -177,15 +199,14 @@ try {
     /*
      * The server will return the unique pkiEzsignsignatureID of each created ezsign signature in the same order they were in the $a_objEzsignsignatureRequestCompound array.
      * You can keep these values for future requests to check the status or other needs
-    */
+     */
     foreach ($objEzsignsignatureCreateObjectV2Response->getMPayload()->getAPkiEzsignsignatureID() as $pkiEzsignsignatureID) {
-        echo "Ezsignsignature created with pkiEzsignsignatureID = $pkiEzsignsignatureID".PHP_EOL;
+        echo "Ezsignsignature created with pkiEzsignsignatureID = $pkiEzsignsignatureID" . PHP_EOL;
     }
 
     //Uncomment this line to ouput complete response
     //print_r($objEzsignsignatureCreateObjectV2Response);
 
-}
-catch (Exception $e) {
+} catch (Exception $e) {
     print_r($e);
 }
