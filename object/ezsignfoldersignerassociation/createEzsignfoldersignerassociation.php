@@ -19,7 +19,7 @@ use eZmaxAPI\Model\EzsignsignerRequestCompoundContact;
  * This value was returned after a successful Ezsignfolder creation.
  */
 
-define ('SAMPLE_pkiEzsignfolderID', 1034);
+define ('SAMPLE_pkiEzsignfolderID', 1105);
 define ('SAMPLE_pkiUserID', 3);
 
 require_once (__DIR__ . '/../../connector.php');
@@ -158,11 +158,17 @@ $objEzsignsignerRequestCompoundContact->setFkiLanguageID(1);
 // Sets the email
 $objEzsignsignerRequestCompoundContact->setSEmailAddress('test@domain.ca');
 
+// Sets the phone number - DEPRECATED
+//$objEzsignsignerRequestCompoundContact->setSPhoneNumber('5149901516');
+
 // Sets the phone number
-$objEzsignsignerRequestCompoundContact->setSPhoneNumber('5149901516');
+$objEzsignsignerRequestCompoundContact->setSPhoneE164('+15149901516');
+
+// Sets the cell phone number - DEPRECATED
+//$objEzsignsignerRequestCompoundContact->setSPhoneNumberCell('5149901516');
 
 // Sets the cell phone number
-$objEzsignsignerRequestCompoundContact->setSPhoneNumberCell('5149901516');
+$objEzsignsignerRequestCompoundContact->setSPhoneE164Cell('+15149901516');
 
 // Let's add the contact to the signer object
 $objEzsignsignerRequestCompound->setObjContact($objEzsignsignerRequestCompoundContact);
@@ -277,11 +283,17 @@ $a_objEzsignfoldersignerassociationRequestCompound [] = $objEzsignfoldersigneras
  // Sets the language of the contact
  $objEzsignsignerRequestCompoundContact->setFkiLanguageID(1);
  
- // Sets the phone number
- $objEzsignsignerRequestCompoundContact->setSPhoneNumber('5149901516');
- 
- // Sets the cell phone number
- $objEzsignsignerRequestCompoundContact->setSPhoneNumberCell('5149901516');
+// Sets the phone number - DEPRECATED
+//$objEzsignsignerRequestCompoundContact->setSPhoneNumber('5149901516');
+
+// Sets the phone number
+$objEzsignsignerRequestCompoundContact->setSPhoneE164('+15149901516');
+
+// Sets the cell phone number - DEPRECATED
+//$objEzsignsignerRequestCompoundContact->setSPhoneNumberCell('5149901516');
+
+// Sets the cell phone number
+$objEzsignsignerRequestCompoundContact->setSPhoneE164Cell('+15149901516');
  
  // Let's add the contact to the signer object
  $objEzsignsignerRequestCompound->setObjContact($objEzsignsignerRequestCompoundContact);
